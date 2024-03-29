@@ -1,0 +1,67 @@
+﻿@using Blazored.FluentValidation
+
+@inherits PageBase
+
+@if (ShowDialog)
+{
+
+    <!-- Modal-->
+    <div class="modal fade show d-block" id="exampleModalSizeLg" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+
+            <div class="modal-content">
+                <div class="">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Enquery Response</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @onclick="Close">
+                            <i aria-hidden="true" class="ki ki-close"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @if(PageModel != null)
+                        {
+                            <EditForm Model="PageModel">
+
+                                <FluentValidationValidator />
+
+                                <p>@QueryMessage</p>
+
+                                <div class="form-group row">
+                                    <label class="col-2 col-form-label">Response</label>
+                                    <div class="col-10">
+                                        <InputTextArea class="form-control" @bind-Value="@PageModel.Response" rows="5" style="resize: none;" placeholder="Enter response here (Max character: 500)." />
+                                        <ValidationMessage For="@(() => PageModel.Response)" class="form-text text-danger" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class=""></label>
+                                    <div class="col-form-label">
+                                        <div class="checkbox-inline">
+                                            <label class="checkbox">
+                                                <InputCheckbox @bind-Value="PageModel.RequireDataModification"></InputCheckbox>
+                                                <span></span>Require data modification for resubmission.
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </EditForm>
+                        } 
+                      
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col text-left">
+                            <button type="button" class="btn btn-light-primary font-weight-bold mr-2" @onclick="Close">Cancel</button>
+                          
+                        </div>
+                        <div class="col text-right">
+                            <button type="button" class="btn btn-secondary font-weight-bold mr-2" @onclick="OnSaveClick">Save</button>
+                        </div>
+                    </div>     
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+}

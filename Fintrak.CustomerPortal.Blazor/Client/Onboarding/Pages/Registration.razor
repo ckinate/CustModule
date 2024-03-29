@@ -1,0 +1,1680 @@
+﻿@page "/onboarding/registration"
+@using Fintrak.CustomerPortal.Blazor.Shared.Extensions;
+@using Blazor.Shared.Models.Enums;
+@using Fintrak.CustomerPortal.Blazor.Client.Onboarding.Models.Validators
+@using Blazored.FluentValidation
+
+@inherits PageBase
+
+<PageTitle>Customer Registration</PageTitle>
+
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+	<!--begin::Subheader-->
+	<div class="subheader py-2 py-lg-6 subheader-transparent" id="kt_subheader">
+		<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+			<!--begin::Info-->
+			<div class="d-flex align-items-center flex-wrap mr-1">
+				<!--begin::Page Heading-->
+				<div class="d-flex align-items-baseline flex-wrap mr-5">
+					<!--begin::Page Title-->
+					<h5 class="text-dark font-weight-bold my-1 mr-5">Registration</h5>
+					<!--end::Page Title-->
+					<!--begin::Breadcrumb-->
+					<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+						<li class="breadcrumb-item text-muted">
+							<a href="#" class="text-muted">Onboarding</a>
+						</li>
+						<li class="breadcrumb-item text-muted">
+							<a href="#" class="text-muted">Registration</a>
+						</li>
+					</ul>
+					<!--end::Breadcrumb-->
+				</div>
+				<!--end::Page Heading-->
+			</div>
+			<!--end::Info-->
+			<!--begin::Toolbar-->
+			<div class="d-flex align-items-center">
+			</div>
+			<!--end::Toolbar-->
+		</div>
+	</div>
+	<!--end::Subheader-->
+	<!--begin::Entry-->
+	<div class="d-flex flex-column-fluid">
+		<!--begin::Container-->
+		<div class="container">
+			<div class="card card-custom">
+
+				<div class="card-header">
+					<div class="card-title">
+						<span class="card-icon">
+							<i class="flaticon2-chat-1 text-primary"></i>
+						</span>
+						<h3 class="card-label">
+							Customer Onboarding
+							<small>
+
+								@if(PageModel != null){
+									if (PageModel.OfficialInformation.Status == OnboardingStatus.Submitted)
+									{
+										<span class="label label-warning label-pill label-inline mr-2">Submitted</span>
+									}
+									else if (PageModel.OfficialInformation.Status == OnboardingStatus.Processing)
+									{
+										<span class="label label-info label-inline mr-2">Processing</span>
+									}
+									else if (PageModel.OfficialInformation.Status == OnboardingStatus.Queried)
+									{
+										<span class="label label-danger label-pill label-inline mr-2">Enqueried</span>
+									}
+									else if (PageModel.OfficialInformation.Status == OnboardingStatus.Completed)
+									{
+										<span class="label label-dark label-inline mr-2">Completed</span>
+									}
+									else
+									{
+										<span class="label label-danger label-pill label-inline mr-2">New</span>
+									}
+
+									@if (!PageModel.OfficialInformation.DueDiligenceCompleted)
+									{
+										<span class="label label-danger label-pill label-inline mr-2">Due diligence in progress</span>
+									}
+								}
+								else
+								{
+									<span class="label label-danger label-pill label-inline mr-2">New</span>
+								}
+								
+							</small>
+						</h3>
+					</div>
+					<div class="card-toolbar">
+						
+					</div>
+				</div>
+
+				<div class="card-body p-0">
+
+
+					@if(PageModel != null)
+					{
+						<EditForm Model="PageModel">
+							<!--begin: Wizard-->
+					<div class="wizard wizard-2" id="kt_wizard" data-wizard-state="step-first" data-wizard-clickable="false">
+						<!--begin: Wizard Nav-->
+						<div class="wizard-nav border-right py-8 px-8 py-lg-20 px-lg-10">
+							<!--begin::Wizard Step 1 Nav-->
+							<div class="wizard-steps">
+								<div class="wizard-step" data-wizard-type="step" data-wizard-state="current">
+									<div class="wizard-wrapper">
+										<div class="wizard-icon">
+											<span class="svg-icon svg-icon-2x">
+												<!--begin::Svg Icon | path:assets/media/svg/icons/General/User.svg-->
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+														<polygon points="0 0 24 0 24 24 0 24" />
+														<path d="M12,11 C9.790861,11 8,9.209139 8,7 C8,4.790861 9.790861,3 12,3 C14.209139,3 16,4.790861 16,7 C16,9.209139 14.209139,11 12,11 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+														<path d="M3.00065168,20.1992055 C3.38825852,15.4265159 7.26191235,13 11.9833413,13 C16.7712164,13 20.7048837,15.2931929 20.9979143,20.2 C21.0095879,20.3954741 20.9979143,21 20.2466999,21 C16.541124,21 11.0347247,21 3.72750223,21 C3.47671215,21 2.97953825,20.45918 3.00065168,20.1992055 Z" fill="#000000" fill-rule="nonzero" />
+													</g>
+												</svg>
+												<!--end::Svg Icon-->
+											</span>
+										</div>
+										<div class="wizard-label">
+											<h3 class="wizard-title">Official Information</h3>
+											<div class="wizard-desc">Setup your official information</div>
+										</div>
+									</div>
+								</div>
+								<!--end::Wizard Step 1 Nav-->
+								<!--begin::Wizard Step 2 Nav-->
+								<div class="wizard-step" data-wizard-type="step">
+									<div class="wizard-wrapper">
+										<div class="wizard-icon">
+											<span class="svg-icon svg-icon-2x">
+												<!--begin::Svg Icon | path:assets/media/svg/icons/Map/Compass.svg-->
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+														<rect x="0" y="0" width="24" height="24" />
+														<path d="M12,21 C7.02943725,21 3,16.9705627 3,12 C3,7.02943725 7.02943725,3 12,3 C16.9705627,3 21,7.02943725 21,12 C21,16.9705627 16.9705627,21 12,21 Z M14.1654881,7.35483745 L9.61055177,10.3622525 C9.47921741,10.4489666 9.39637436,10.592455 9.38694497,10.7495509 L9.05991526,16.197949 C9.04337012,16.4735952 9.25341309,16.7104632 9.52905936,16.7270083 C9.63705011,16.7334903 9.74423017,16.7047714 9.83451193,16.6451626 L14.3894482,13.6377475 C14.5207826,13.5510334 14.6036256,13.407545 14.613055,13.2504491 L14.9400847,7.80205104 C14.9566299,7.52640477 14.7465869,7.28953682 14.4709406,7.27299168 C14.3629499,7.26650974 14.2557698,7.29522855 14.1654881,7.35483745 Z" fill="#000000" />
+													</g>
+												</svg>
+												<!--end::Svg Icon-->
+											</span>
+										</div>
+										<div class="wizard-label">
+											<h3 class="wizard-title">Key Contact Persons</h3>
+											<div class="wizard-desc">Setup key contact persons</div>
+										</div>
+									</div>
+								</div>
+								<!--end::Wizard Step 2 Nav-->
+								<!--begin::Wizard Step 3 Nav-->
+								<div class="wizard-step" data-wizard-type="step">
+									<div class="wizard-wrapper">
+										<div class="wizard-icon">
+											<span class="svg-icon svg-icon-2x">
+												<!--begin::Svg Icon | path:assets/media/svg/icons/General/Thunder-move.svg-->
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+														<rect x="0" y="0" width="24" height="24" />
+														<path d="M16.3740377,19.9389434 L22.2226499,11.1660251 C22.4524142,10.8213786 22.3592838,10.3557266 22.0146373,10.1259623 C21.8914367,10.0438285 21.7466809,10 21.5986122,10 L17,10 L17,4.47708173 C17,4.06286817 16.6642136,3.72708173 16.25,3.72708173 C15.9992351,3.72708173 15.7650616,3.85240758 15.6259623,4.06105658 L9.7773501,12.8339749 C9.54758575,13.1786214 9.64071616,13.6442734 9.98536267,13.8740377 C10.1085633,13.9561715 10.2533191,14 10.4013878,14 L15,14 L15,19.5229183 C15,19.9371318 15.3357864,20.2729183 15.75,20.2729183 C16.0007649,20.2729183 16.2349384,20.1475924 16.3740377,19.9389434 Z" fill="#000000" />
+														<path d="M4.5,5 L9.5,5 C10.3284271,5 11,5.67157288 11,6.5 C11,7.32842712 10.3284271,8 9.5,8 L4.5,8 C3.67157288,8 3,7.32842712 3,6.5 C3,5.67157288 3.67157288,5 4.5,5 Z M4.5,17 L9.5,17 C10.3284271,17 11,17.6715729 11,18.5 C11,19.3284271 10.3284271,20 9.5,20 L4.5,20 C3.67157288,20 3,19.3284271 3,18.5 C3,17.6715729 3.67157288,17 4.5,17 Z M2.5,11 L6.5,11 C7.32842712,11 8,11.6715729 8,12.5 C8,13.3284271 7.32842712,14 6.5,14 L2.5,14 C1.67157288,14 1,13.3284271 1,12.5 C1,11.6715729 1.67157288,11 2.5,11 Z" fill="#000000" opacity="0.3" />
+													</g>
+												</svg>
+												<!--end::Svg Icon-->
+											</span>
+										</div>
+										<div class="wizard-label">
+											<h3 class="wizard-title">Additional Contact Channels</h3>
+											<div class="wizard-desc">Setup additional contact channels</div>
+										</div>
+									</div>
+								</div>
+								<!--end::Wizard Step 3 Nav-->
+								<!--begin::Wizard Step 4 Nav-->
+								<div class="wizard-step" data-wizard-type="step">
+									<div class="wizard-wrapper">
+										<div class="wizard-icon">
+											<span class="svg-icon svg-icon-2x">
+												<!--begin::Svg Icon | path:assets/media/svg/icons/Map/Position.svg-->
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+														<rect x="0" y="0" width="24" height="24" />
+														<path d="M19,11 L21,11 C21.5522847,11 22,11.4477153 22,12 C22,12.5522847 21.5522847,13 21,13 L19,13 C18.4477153,13 18,12.5522847 18,12 C18,11.4477153 18.4477153,11 19,11 Z M3,11 L5,11 C5.55228475,11 6,11.4477153 6,12 C6,12.5522847 5.55228475,13 5,13 L3,13 C2.44771525,13 2,12.5522847 2,12 C2,11.4477153 2.44771525,11 3,11 Z M12,2 C12.5522847,2 13,2.44771525 13,3 L13,5 C13,5.55228475 12.5522847,6 12,6 C11.4477153,6 11,5.55228475 11,5 L11,3 C11,2.44771525 11.4477153,2 12,2 Z M12,18 C12.5522847,18 13,18.4477153 13,19 L13,21 C13,21.5522847 12.5522847,22 12,22 C11.4477153,22 11,21.5522847 11,21 L11,19 C11,18.4477153 11.4477153,18 12,18 Z" fill="#000000" fill-rule="nonzero" opacity="0.3" />
+														<circle fill="#000000" opacity="0.3" cx="12" cy="12" r="2" />
+														<path d="M12,17 C14.7614237,17 17,14.7614237 17,12 C17,9.23857625 14.7614237,7 12,7 C9.23857625,7 7,9.23857625 7,12 C7,14.7614237 9.23857625,17 12,17 Z M12,19 C8.13400675,19 5,15.8659932 5,12 C5,8.13400675 8.13400675,5 12,5 C15.8659932,5 19,8.13400675 19,12 C19,15.8659932 15.8659932,19 12,19 Z" fill="#000000" fill-rule="nonzero" />
+													</g>
+												</svg>
+												<!--end::Svg Icon-->
+											</span>
+										</div>
+										<div class="wizard-label">
+											<h3 class="wizard-title">Fee Account</h3>
+											<div class="wizard-desc">Setup fee account</div>
+										</div>
+									</div>
+								</div>
+								<!--end::Wizard Step 4 Nav-->
+								<!--begin::Wizard Step 5 Nav-->
+								<div class="wizard-step" data-wizard-type="step">
+									<div class="wizard-wrapper">
+										<div class="wizard-icon">
+											<span class="svg-icon svg-icon-2x">
+												<!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Credit-card.svg-->
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+														<rect x="0" y="0" width="24" height="24" />
+														<rect fill="#000000" opacity="0.3" x="2" y="5" width="20" height="14" rx="2" />
+														<rect fill="#000000" x="2" y="8" width="20" height="3" />
+														<rect fill="#000000" opacity="0.3" x="16" y="14" width="4" height="2" rx="1" />
+													</g>
+												</svg>
+												<!--end::Svg Icon-->
+											</span>
+										</div>
+										<div class="wizard-label">
+											<h3 class="wizard-title">Commission Account</h3>
+											<div class="wizard-desc">Setup commission accounts</div>
+										</div>
+									</div>
+								</div>
+								<!--end::Wizard Step 5 Nav-->
+								<!--begin::Wizard Step 6 Nav-->
+								<div class="wizard-step" data-wizard-type="step">
+									<div class="wizard-wrapper">
+										<div class="wizard-icon">
+											<span class="svg-icon svg-icon-2x">
+												<!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Credit-card.svg-->
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+														<rect x="0" y="0" width="24" height="24" />
+														<rect fill="#000000" opacity="0.3" x="2" y="5" width="20" height="14" rx="2" />
+														<rect fill="#000000" x="2" y="8" width="20" height="3" />
+														<rect fill="#000000" opacity="0.3" x="16" y="14" width="4" height="2" rx="1" />
+													</g>
+												</svg>
+												<!--end::Svg Icon-->
+											</span>
+										</div>
+										<div class="wizard-label">
+											<h3 class="wizard-title">Signatories</h3>
+											<div class="wizard-desc">Setup signatories</div>
+										</div>
+									</div>
+								</div>
+								<!--end::Wizard Step 6 Nav-->
+								<!--begin::Wizard Step 7 Nav-->
+								<div class="wizard-step" data-wizard-type="step">
+									<div class="wizard-wrapper">
+										<div class="wizard-icon">
+											<span class="svg-icon svg-icon-2x">
+												<!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Credit-card.svg-->
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+														<rect x="0" y="0" width="24" height="24" />
+														<rect fill="#000000" opacity="0.3" x="2" y="5" width="20" height="14" rx="2" />
+														<rect fill="#000000" x="2" y="8" width="20" height="3" />
+														<rect fill="#000000" opacity="0.3" x="16" y="14" width="4" height="2" rx="1" />
+													</g>
+												</svg>
+												<!--end::Svg Icon-->
+											</span>
+										</div>
+										<div class="wizard-label">
+											<h3 class="wizard-title">Documents</h3>
+											<div class="wizard-desc">Upload your documents here</div>
+										</div>
+									</div>
+								</div>
+								<!--end::Wizard Step 7 Nav-->
+										<!--begin::Wizard Step 8 Nav-->
+										<div class="wizard-step" data-wizard-type="step">
+											<div class="wizard-wrapper">
+												<div class="wizard-icon">
+													<span class="svg-icon svg-icon-2x">
+														<!--begin::Svg Icon | path:assets/media/svg/icons/Shopping/Credit-card.svg-->
+														<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+															<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+																<rect x="0" y="0" width="24" height="24" />
+																<rect fill="#000000" opacity="0.3" x="2" y="5" width="20" height="14" rx="2" />
+																<rect fill="#000000" x="2" y="8" width="20" height="3" />
+																<rect fill="#000000" opacity="0.3" x="16" y="14" width="4" height="2" rx="1" />
+															</g>
+														</svg>
+														<!--end::Svg Icon-->
+													</span>
+												</div>
+												<div class="wizard-label">
+													<h3 class="wizard-title">Additional Information</h3>
+													<div class="wizard-desc">Supply the following information</div>
+												</div>
+											</div>
+										</div>
+										<!--end::Wizard Step 8 Nav-->
+
+								<!--begin::Wizard Step 9 Nav-->
+								<div class="wizard-step" data-wizard-type="step">
+									<div class="wizard-wrapper">
+										<div class="wizard-icon">
+											<span class="svg-icon svg-icon-2x">
+												<!--begin::Svg Icon | path:assets/media/svg/icons/General/Like.svg-->
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+														<rect x="0" y="0" width="24" height="24" />
+														<path d="M9,10 L9,19 L10.1525987,19.3841996 C11.3761964,19.7920655 12.6575468,20 13.9473319,20 L17.5405883,20 C18.9706314,20 20.2018758,18.990621 20.4823303,17.5883484 L21.231529,13.8423552 C21.5564648,12.217676 20.5028146,10.6372006 18.8781353,10.3122648 C18.6189212,10.260422 18.353992,10.2430672 18.0902299,10.2606513 L14.5,10.5 L14.8641964,6.49383981 C14.9326895,5.74041495 14.3774427,5.07411874 13.6240179,5.00562558 C13.5827848,5.00187712 13.5414031,5 13.5,5 L13.5,5 C12.5694044,5 11.7070439,5.48826024 11.2282564,6.28623939 L9,10 Z" fill="#000000" />
+														<rect fill="#000000" opacity="0.3" x="2" y="9" width="5" height="11" rx="1" />
+													</g>
+												</svg>
+												<!--end::Svg Icon-->
+											</span>
+										</div>
+										<div class="wizard-label">
+											<h3 class="wizard-title">Completed!</h3>
+											<div class="wizard-desc">Review and Submit</div>
+										</div>
+									</div>
+								</div>
+								<!--end::Wizard Step 9 Nav-->
+							</div>
+						</div>
+						<!--end: Wizard Nav-->
+
+						<!--begin: Wizard Body-->
+						<div class="wizard-body py-8 px-8 py-lg-20 px-lg-10">
+							<!--begin: Wizard Form-->
+							<div class="row">
+								<div class="offset-xxl-2 col-xxl-8">
+									@*<form class="form" id="kt_form">*@
+
+											<FluentValidationValidator />
+
+											<!--begin: Wizard Step 1-->
+											<div class="pb-5" data-wizard-type="step-content" data-wizard-state="current">
+												<h4 class="mb-10 font-weight-bold text-dark">Official Information</h4>
+												<!--begin::Input-->
+												<div class="form-group">
+													<label>Company Name<span class="text-danger">*</span></label>
+													
+													<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.OfficialInformation.CompanyName"></InputText>
+													<ValidationMessage For="@(() => PageModel.OfficialInformation.CompanyName)" class="form-text text-danger" />
+												</div>
+												<!--end::Input-->
+
+												<div class="row">
+													<div class="col-xl-6">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label>RC number<span class="text-danger">*</span></label>
+															<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.OfficialInformation.RegistrationCertificateNumber"></InputText>
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.RegistrationCertificateNumber)" class="form-text text-danger" />
+														</div>
+														<!--end::Input-->
+													</div>
+													<div class="col-xl-6">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label>Incorporation Date<span class="text-danger">*</span></label>
+
+															@*<InputDate class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.OfficialInformation.IncorporationDate"></InputDate>*@
+															@*	<InputDate class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.OfficialInformation.IncorporationDate)" Value="PageModel.OfficialInformation.IncorporationDate" ValueChanged="@((DateTime? value) => OnIncorporationDateValueChanged(value))" @onkeypress="OnDateKeyPress" ></InputDate>*@
+
+															<CustomInputDateNullable class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.OfficialInformation.IncorporationDate)" Value="PageModel.OfficialInformation.IncorporationDate" ValueChanged="@((DateTime? value) => OnIncorporationDateValueChanged(value))"></CustomInputDateNullable>
+
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.IncorporationDate)" class="form-text text-danger" />
+														</div>
+														<!--end::Input-->
+													</div>
+												</div>
+
+												<!--begin::Input-->
+												<div class="form-group">
+													<label>Register Address1<span class="text-danger">*</span></label>
+													<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.OfficialInformation.RegisterAddress1"></InputText>
+													<ValidationMessage For="@(() => PageModel.OfficialInformation.RegisterAddress1)" class="form-text text-danger" />
+												</div>
+												<!--end::Input-->
+												<!--begin::Input-->
+												<div class="form-group">
+													<label>Register Address2<span class="text-danger"></span></label>
+													<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.OfficialInformation.RegisterAddress2"></InputText>
+													<ValidationMessage For="@(() => PageModel.OfficialInformation.RegisterAddress2)" class="form-text text-danger" />
+												</div>
+												<!--end::Input-->
+												<!--begin::Input-->
+												<div class="form-group">
+													<label>Business Nature<span class="text-danger"></span></label>
+													<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.OfficialInformation.BusinessNature"></InputText>
+													<ValidationMessage For="@(() => PageModel.OfficialInformation.BusinessNature)" class="form-text text-danger" />
+												</div>
+												<!--end::Input-->
+
+												<div class="row">
+													<div class="col-xl-6">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label>TIN<span class="text-danger">*</span></label>
+															<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.OfficialInformation.TaxIdentificationNumber"></InputText>
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.TaxIdentificationNumber)" class="form-text text-danger" />
+														</div>
+														<!--end::Input-->
+													</div>
+													<div class="col-xl-6">
+														<!--begin::Input-->
+														<!--begin::Select-->
+														<div class="form-group">
+															<label>Country<span class="text-danger">*</span></label>
+															<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.OfficialInformation.Country)" Value="PageModel.OfficialInformation.Country" ValueChanged="@((string value) => OnCountryValueChanged(value))">
+																<option value="">Select</option>
+																@if (CountryLookup != null)
+																{
+																	foreach (var item in CountryLookup)
+																	{
+																		<option value="@item.Text">@item.Text</option>
+																	}
+																}
+
+															</InputSelect>
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.Country)" class="form-text text-danger" />
+														</div>
+														<!--end::Input-->
+													</div>
+												</div>
+
+												<div class="row">
+													
+													<div class="col-xl-6">
+														<!--begin::Input-->
+														<!--begin::Select-->
+														<div class="form-group">
+															<label>State<span class="text-danger">*</span></label>
+															<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.OfficialInformation.State)" Value="PageModel.OfficialInformation.State" ValueChanged="@((string value) => OnStateValueChanged(value))">
+																<option value="">Select</option>
+																@if (StateLookup != null)
+																{
+																	foreach (var item in StateLookup)
+																	{
+																		<option value="@item.Text">@item.Text</option>
+																	}
+																}
+
+															</InputSelect>
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.State)" class="form-text text-danger" />
+														</div>
+														<!--end::Input-->
+													</div>
+
+													<div class="col-xl-6">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label>City<span class="text-danger">*</span></label>
+															<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.OfficialInformation.City"></InputText>
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.City)" class="form-text text-danger" />
+														</div>
+														<!--end::Input-->
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-xl-6">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label>Office Phone<span class="text-danger">*</span></label>
+															<div class="input-group">
+																<div class="input-group-prepend">
+																	<span class="input-group-text">
+																		<InputSelect @bind-Value="PageModel.OfficialInformation.OfficePhoneCallCode" disabled="true" style="width:100px;">
+																			<option value=""></option>
+																			@if (CountryCallCodeLookup != null)
+																			{
+																				foreach (var item in CountryCallCodeLookup)
+																				{
+																					<option value="@item.AlternateText2">@item.AlternateText (@item.AlternateText2)</option>
+																				}
+																			}
+																		</InputSelect>
+																	</span>
+																</div>
+
+																<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.OfficialInformation.OfficePhoneNumber"></InputText>
+
+
+															</div>
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.OfficePhoneCallCode)" class="form-text text-danger" />
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.OfficePhoneNumber)" class="form-text text-danger" />
+														</div>
+														<!--end::Input-->
+													</div>
+													<div class="col-xl-6">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label>Mobile Phone<span class="text-danger">*</span></label>
+															<div class="input-group">
+																<div class="input-group-prepend">
+																	<span class="input-group-text">
+																		<InputSelect @bind-Value="PageModel.OfficialInformation.MobilePhoneCallCode" disabled="true" style="width:100px;">
+																			<option value=""></option>
+																			@if (CountryCallCodeLookup != null)
+																			{
+																				foreach (var item in CountryCallCodeLookup)
+																				{
+																					<option value="@item.AlternateText2">@item.AlternateText (@item.AlternateText2)</option>
+																				}
+																			}
+																		</InputSelect>
+																	</span>
+																</div>
+																<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.OfficialInformation.MobilePhoneNumber"></InputText>
+
+															</div>
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.MobilePhoneCallCode)" class="form-text text-danger" />
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.MobilePhoneNumber)" class="form-text text-danger" />
+														</div>
+														<!--end::Input-->
+													</div>
+												</div>
+
+												<div class="row">
+													<div class="col-xl-6">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label>Email<span class="text-danger">*</span></label>
+															<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.OfficialInformation.Email"></InputText>
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.Email)" class="form-text text-danger" />
+														</div>
+														<!--end::Input-->
+													</div>
+													<div class="col-xl-6">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label>Fax</label>
+															<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.OfficialInformation.Fax"></InputText>
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.Fax)" class="form-text text-danger" />
+														</div>
+														<!--end::Input-->
+													</div>
+												</div>
+
+												<div class="row">
+													@* <div class="col-xl-6">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label class=""></label>
+															<div class="col-form-label">
+																<div class="checkbox-inline">
+																	
+																	<label class="checkbox">
+																		<InputCheckbox @bind-Value="PageModel.OfficialInformation.HasChildInstitutionType"></InputCheckbox>
+																		<span></span>Is a sub institution type
+																	</label>
+																</div>
+															</div>
+														</div>
+														<!--end::Input-->
+													</div> *@
+													<div class="col-xl-6">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label>Institution Type<span class="text-danger">*</span></label>
+															<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.OfficialInformation.InstitutionTypeId)" Value="PageModel.OfficialInformation.InstitutionTypeId" ValueChanged="@((int? value) => OnInstitutionTypesValueChanged(value))">
+																<option value="0" selected="selected">Select Institution Type</option>
+																@if (ParentInstitutionTypeLookup != null)
+																{
+																	foreach (var item in ParentInstitutionTypeLookup)
+																	{
+																		<option value="@item.Value">@item.Text</option>
+																	}
+																}
+															</InputSelect>
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.InstitutionTypeId)" class="form-text text-danger" />
+														</div>
+														<!--end::Input-->
+													</div>
+													<div class="col-xl-6">
+															<!--begin::Input-->
+															<div class="form-group">
+																<label>Institution Code</label>
+																<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.OfficialInformation.InstitutionCode"></InputText>
+																<ValidationMessage For="@(() => PageModel.OfficialInformation.InstitutionCode)" class="form-text text-danger" />
+															</div>
+															<!--end::Input-->
+														</div>
+												</div>
+
+												@* @if (PageModel.OfficialInformation.HasChildInstitutionType)
+												{
+													<div class="row">
+
+														<div class="col-xl-6">
+															<!--begin::Input-->
+															<div class="form-group">
+																<label>Sub Institution Type<span class="text-danger">*</span></label>
+																<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.OfficialInformation.ChildInstitutionTypeId)" Value="PageModel.OfficialInformation.ChildInstitutionTypeId" ValueChanged="@((int? value) => OnSubInstitutionTypesValueChanged(value))">
+																	<option value="0" selected="selected">Select Sub Institution Type</option>
+																	@if (ChildrenInstitutionTypeLookup != null)
+																	{
+																		foreach (var item in ChildrenInstitutionTypeLookup)
+																		{
+																			<option value="@item.Value">@item.Text</option>
+																		}
+																	}
+																</InputSelect>
+																<ValidationMessage For="@(() => PageModel.OfficialInformation.ChildInstitutionTypeId)" class="form-text text-danger" />
+															</div>
+															<!--end::Input-->
+														</div>
+
+														<div class="col-xl-6">
+															<!--begin::Input-->
+															<div class="form-group">
+																<label>Institution Code</label>
+																<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.OfficialInformation.InstitutionCode"></InputText>
+																<ValidationMessage For="@(() => PageModel.OfficialInformation.InstitutionCode)" class="form-text text-danger" />
+															</div>
+															<!--end::Input-->
+														</div>
+													</div>
+												} *@
+
+
+												<div class="row">
+													<div class="col-xl-4">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label class=""></label>
+															<div class="col-form-label">
+																<div class="checkbox-inline">
+
+																<label class="checkbox">
+																<InputCheckbox @bind-Value="PageModel.OfficialInformation.IsCorrespondentBank"></InputCheckbox>
+																<span></span>Is a correspondent bank
+																</label>
+																</div>
+															</div>
+														</div>
+														<!--end::Input-->
+													</div>
+
+													<div class="col-xl-4">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label class=""></label>
+															<div class="col-form-label">
+																<div class="checkbox-inline">
+
+																	<label class="checkbox">
+																		<InputCheckbox @bind-Value="PageModel.OfficialInformation.HasSubsidiary"></InputCheckbox>
+																		<span></span>Has subsidiaries
+																	</label>
+																</div>
+															</div>
+														</div>
+														<!--end::Input-->
+													</div>
+
+													<div class="col-xl-4">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label class=""></label>
+															<div class="col-form-label">
+																<div class="checkbox-inline">
+
+																	<label class="checkbox">
+																		<InputCheckbox @bind-Value="PageModel.OfficialInformation.IsSubsidiary"></InputCheckbox>
+																		<span></span>Is a subsidiary
+																	</label>
+																</div>
+															</div>
+														</div>
+														<!--end::Input-->
+													</div>
+												
+												</div>
+
+												@if (PageModel.OfficialInformation.IsSubsidiary)
+												{
+													<div class="row">
+														<div class="col-xl-6">
+															<!--begin::Input-->
+															<div class="form-group">
+																<label>Parent<span class="text-danger">*</span></label>
+																<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.OfficialInformation.ParentCode)" Value="PageModel.OfficialInformation.ParentCode" ValueChanged="@((string value) => OnParentValueChanged(value))">
+																<option value="0" selected="selected">Select parent</option>
+																@if (ParentLookup != null)
+																{
+																		foreach (var item in ParentLookup)
+																{
+																<option value="@item.Value">@item.Text</option>
+																}
+																}
+																</InputSelect>
+																<ValidationMessage For="@(() => PageModel.OfficialInformation.ParentCode)" class="form-text text-danger" />
+															</div>
+															<!--end::Input-->
+														</div>
+													</div>
+												}
+
+												<div class="row">
+													<div class="col-xl-6">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label>Website</label>
+															<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.OfficialInformation.Website"></InputText>
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.Website)" class="form-text text-danger" />
+														</div>
+														<!--end::Input-->
+													</div>
+
+													<div class="col-xl-6">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label>Sector<span class="text-danger">*</span></label>
+															<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.OfficialInformation.SectorId)" Value="PageModel.OfficialInformation.SectorId" ValueChanged="@((int? value) => OnSectorValueChanged(value))">
+																<option value="0" selected="selected">Select Sector</option>
+																@if (SectorLookup != null)
+																{
+																	foreach (var item in SectorLookup)
+																	{
+																		<option value="@item.Value">@item.Text</option>
+																	}
+																}
+															</InputSelect>
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.SectorId)" class="form-text text-danger" />
+
+
+														</div>
+														<!--end::Input-->
+													</div>
+												</div>
+
+												<div class="row">
+													
+													<div class="col-xl-6">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label>Industry<span class="text-danger">*</span></label>
+															<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.OfficialInformation.IndustryId)" Value="PageModel.OfficialInformation.IndustryId" ValueChanged="@((int? value) => OnIndustriesValueChanged(value))">
+																<option value="0" selected="selected">Select Industry</option>
+																@if (IndustryLookup != null)
+																{
+																	foreach (var item in IndustryLookup)
+																	{
+																		<option value="@item.Value">@item.Text</option>
+																	}
+																}
+															</InputSelect>
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.IndustryId)" class="form-text text-danger" />
+														</div>
+														<!--end::Input-->
+													</div>
+
+													<div class="col-xl-6">
+														<!--begin::Input-->
+														<div class="form-group">
+															<label>Staff size<span class="text-danger">*</span></label>
+															<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.OfficialInformation.StaffSize)" Value="PageModel.OfficialInformation.StaffSize" ValueChanged="@((StaffSize value) => OnStaffSizeValueChanged(value))">
+																@* <option value="0" selected="selected">Select staff size</option> *@
+																<option value="@StaffSize.LessThanTen">Less than 10</option>
+																<option value="@StaffSize.LessThanFifty">Less than 50</option>
+																<option value="@StaffSize.AboveFifty">Above 50</option>
+															</InputSelect>
+															<ValidationMessage For="@(() => PageModel.OfficialInformation.StaffSize)" class="form-text text-danger" />
+														</div>
+														<!--end::Input-->
+													</div>
+												</div>
+
+												<div class="row">
+													@if (PageModel.HasSettlementBank)
+													{
+														<div class="col-xl-6">
+															<div class="form-group">
+																<label>Settlement Bank<span class="text-danger">*</span></label>
+																<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.OfficialInformation.SettlementBankName)" Value="PageModel.OfficialInformation.SettlementBankName" ValueChanged="@((string value) => OnSettlementBankValueChanged(value))">
+																	<option value="">Select</option>
+																	@if (BankLookup != null)
+																	{
+																		foreach (var item in BankLookup)
+																		{
+																			<option value="@item.Text">@item.Text</option>
+																		}
+																	}
+
+																</InputSelect>
+																<ValidationMessage For="@(() => PageModel.OfficialInformation.SettlementBankName)" class="form-text text-danger" />
+
+															</div>
+														</div>
+													}
+													<div class="col-xl-6">
+														<!--begin::Group-->
+														<div class="form-group">
+															<label class=""></label>
+															<div class="col-form-label">
+																<div class="checkbox-inline">
+																	@*<label class="checkbox">
+																<InputCheckbox @bind-Value="PageModel.OfficialInformation.UseForeignAccount"></InputCheckbox>
+																<span></span>Use foreign account for transactions
+																</label>*@
+																	<label class="checkbox">
+																		<InputCheckbox @bind-Value="PageModel.OfficialInformation.IsPublic"></InputCheckbox>
+																		<span></span>Public company
+																	</label>
+																</div>
+															</div>
+														</div>
+														<!--end::Group-->
+													</div>
+												</div>
+
+												
+												<!--begin::Input-->
+												<div class="form-group">
+													<label>Logo<span class="text-danger"></span></label>
+
+													<InputFile OnChange="@((InputFileChangeEventArgs e) => HandleLogoFileSelection(e))" class="form-control form-control-solid form-control-lg" accept=".png,.jpeg,.jpg" />
+
+													@if (!string.IsNullOrEmpty(PageModel.OfficialInformation.LogoSelectedFileName))
+													{
+														<label>Selected file: @PageModel.OfficialInformation.LogoSelectedFileName </label>
+													}
+
+													<ValidationMessage For="@(() => PageModel.OfficialInformation.LogoFileData)" class="form-text text-muted" />
+
+												</div>
+												<!--end::Input-->
+												@if (!string.IsNullOrEmpty(PageModel.OfficialInformation.LogoLocation))
+												{
+													<!--begin::Input-->
+													<div class="form-group">
+														<a href="@PageModel.OfficialInformation.LogoLocation" target="_blank">Click to view logo</a>
+
+													</div>
+													<!--end::Input-->
+												}
+
+											</div>
+											<!--end: Wizard Step 1-->
+											<!--begin: Wizard Step 2-->
+											<div class="pb-5" data-wizard-type="step-content">
+												<h4 class="mb-10 font-weight-bold text-dark">Key Contact Persons</h4>
+
+												@if (PageModel.ContactPersons != null && PageModel.ContactPersons.ContactPersons.Count > 0)
+												{
+													foreach (var (contactPerson, index) in PageModel.ContactPersons.ContactPersons.Select((v, i) => (v, i)))
+													{
+
+														var nameField = $"ContactPersons[{index}].Name";
+
+														<div>
+															<div class="row">
+																<div class="col-xl-4">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>First Name<span class="text-danger">*</span></label>
+																		<InputText class="form-control form-control-solid form-control-lg" ValueChanged="@((string value) => ContactPersonFirstNameHandler(value, contactPerson.FormId))" Value="@PageModel.ContactPersons.ContactPersons[index].FirstName" ValueExpression="@( () => PageModel.ContactPersons.ContactPersons[index].FirstName)"></InputText>
+																		<ValidationMessage For="@(() => PageModel.ContactPersons.ContactPersons[index].FirstName)" class="form-text text-danger" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-4">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Middle Name</label>
+																		<InputText class="form-control form-control-solid form-control-lg" ValueChanged="@((string value) => ContactPersonMiddleNameHandler(value, contactPerson.FormId))" Value="@PageModel.ContactPersons.ContactPersons[index].MiddleName" ValueExpression="@( () => PageModel.ContactPersons.ContactPersons[index].MiddleName)"></InputText>
+																		<ValidationMessage For="@(() => PageModel.ContactPersons.ContactPersons[index].MiddleName)" class="form-text text-danger" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-4">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Last Name<span class="text-danger">*</span></label>
+																		<InputText class="form-control form-control-solid form-control-lg" ValueChanged="@((string value) => ContactPersonLastNameHandler(value, contactPerson.FormId))" Value="@PageModel.ContactPersons.ContactPersons[index].LastName" ValueExpression="@( () => PageModel.ContactPersons.ContactPersons[index].LastName)"></InputText>
+																		<ValidationMessage For="@(() => PageModel.ContactPersons.ContactPersons[index].LastName)" class="form-text text-danger" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+															</div>
+
+															<div class="row">
+																<div class="col-xl-6">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Email<span class="text-danger">*</span></label>
+																		<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.ContactPersons.ContactPersons[index].Email"></InputText>
+																		<ValidationMessage For="@(() => PageModel.ContactPersons.ContactPersons[index].Email)" class="form-text text-danger" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-6">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Mobile Phone<span class="text-danger">*</span></label>
+																		<div class="input-group">
+																			<div class="input-group-prepend">
+																				<span class="input-group-text">
+																					<InputSelect ValueChanged="@((string value) => ContactPersonCallCodeHandler(value, contactPerson.FormId))" Value="@PageModel.ContactPersons.ContactPersons[index].MobilePhoneCallCode" ValueExpression="@( () => PageModel.ContactPersons.ContactPersons[index].MobilePhoneCallCode)" style="width:100px;">
+																						<option value=""></option>
+																						@if (CountryCallCodeLookup != null)
+																						{
+																							foreach (var item in CountryCallCodeLookup)
+																							{
+																								<option value="@item.AlternateText2">@item.AlternateText (@item.AlternateText2)</option>
+																							}
+																						}
+																					</InputSelect>
+																				</span>
+																			</div>
+																			<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.ContactPersons.ContactPersons[index].MobilePhoneNumber"></InputText>
+
+																		</div>
+
+																		<ValidationMessage For="@(() => PageModel.ContactPersons.ContactPersons[index].MobilePhoneCallCode)" class="form-text text-danger" />
+																		<ValidationMessage For="@(() => PageModel.ContactPersons.ContactPersons[index].MobilePhoneNumber)" class="form-text text-danger" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+															</div>
+
+															<div class="row">
+																<div class="col-xl-4">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Designation<span class="text-danger">*</span></label>
+																		<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.ContactPersons.ContactPersons[index].Designation"></InputText>
+																		<ValidationMessage For="@(() => PageModel.ContactPersons.ContactPersons[index].Designation)" class="form-text text-danger" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-4">
+																	<div class="form-group">
+																		<label class=""></label>
+																		<div class="col-form-label">
+																			<div class="checkbox-inline">
+																				<label class="checkbox">
+																					<InputCheckbox ValueChanged="@((bool value) => MarkContactPersonAsDefaultHandler(value, contactPerson.FormId))" Value="@PageModel.ContactPersons.ContactPersons[index].Default" ValueExpression="@( () => PageModel.ContactPersons.ContactPersons[index].Default)"></InputCheckbox>
+																					<span></span>Mark as default
+																				</label>
+
+																			</div>
+																		</div>
+																	</div>
+																</div>
+																<div class="col-xl-4">
+																	<a href="javascript:;" class="btn btn-sm btn-light-danger mt-3 mt-md-9" @onclick="@(() => RemoveContactPerson(contactPerson.FormId))">
+																		<i class="la la-trash-o fs-3"></i>Remove
+																	</a>
+																</div>
+															</div>
+
+															
+
+														</div>
+													}
+
+												}
+
+												<!--begin::Form group-->
+												<div class="form-group">
+													<a href="javascript:;" class="btn btn-light-primary" @onclick="AddContactPerson">
+														<i class="la la-plus"></i>Add
+													</a>
+												</div>
+												<!--end::Form group-->
+
+											</div>
+											<!--end: Wizard Step 2-->
+											<!--begin: Wizard Step 3-->
+											<div class="pb-5" data-wizard-type="step-content">
+												<h4 class="mb-10 font-weight-bold text-dark">Additional Contact Channels</h4>
+
+												@if (PageModel.ContactChannels != null && PageModel.ContactChannels.ContactChannels.Count > 0)
+												{
+													foreach (var (contactChannel, index) in PageModel.ContactChannels.ContactChannels.Select((v, i) => (v, i)))
+													{
+														<div>
+															<div class="row">
+																<div class="col-xl-3">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Type<span class="text-danger">*</span></label>
+																		<InputSelect ValueChanged="@((ChannelType value) => ContactChannelTypeHandler(value, contactChannel.FormId))" Value="@PageModel.ContactChannels.ContactChannels[index].Type" ValueExpression="@( () => PageModel.ContactChannels.ContactChannels[index].Type)" class="form-control form-control-solid form-control-lg">
+																			<option value="@ChannelType.Email">Email</option>
+																			<option value="@ChannelType.Phone">Phone</option>
+																		</InputSelect>
+																	</div>
+																	<!--end::Input-->
+																</div>
+
+																@if (contactChannel.Type == ChannelType.Email)
+																{
+																	<div class="col-xl-6">
+																		<!--begin::Input-->
+																		<div class="form-group">
+																			<label>Email<span class="text-danger">*</span></label>
+
+																			<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.ContactChannels.ContactChannels[index].Email"></InputText>
+																			<ValidationMessage For="@(() => PageModel.ContactChannels.ContactChannels[index].Type)" class="form-text text-danger" />
+																			<ValidationMessage For="@(() => PageModel.ContactChannels.ContactChannels[index].Email)" class="form-text text-danger" />
+																		</div>
+																		<!--end::Input-->
+																	</div>
+																}
+																else
+																{
+																	<div class="col-xl-6">
+																		<!--begin::Input-->
+																		<div class="form-group">
+																			<label>Mobile Phone<span class="text-danger">*</span></label>
+																			<div class="input-group">
+																				<div class="input-group-prepend">
+																					<span class="input-group-text">
+																					<InputSelect ValueChanged="@((string value) => ContactChannelCallCodeHandler(value, contactChannel.FormId))" Value="@PageModel.ContactChannels.ContactChannels[index].MobilePhoneCallCode" ValueExpression="@( () => PageModel.ContactChannels.ContactChannels[index].MobilePhoneCallCode)" style="width:100px;">
+																							<option value=""></option>
+																							@if (CountryCallCodeLookup != null)
+																							{
+																								foreach (var item in CountryCallCodeLookup)
+																								{
+																									<option value="@item.AlternateText2">@item.AlternateText (@item.AlternateText2)</option>
+																								}
+																							}
+																						</InputSelect>
+																					</span>
+																				</div>
+																				<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.ContactChannels.ContactChannels[index].MobilePhoneNumber"></InputText>
+
+																			</div>
+																			<ValidationMessage For="@(() => PageModel.ContactChannels.ContactChannels[index].MobilePhoneCallCode)" class="form-text text-danger" />
+																			<ValidationMessage For="@(() => PageModel.ContactChannels.ContactChannels[index].MobilePhoneNumber)" class="form-text text-danger" />
+																		</div>
+																		<!--end::Input-->
+																	</div>
+																}
+
+																<div class="col-xl-3">
+																	<a href="javascript:;" class="btn btn-sm btn-light-danger mt-3 mt-md-9" @onclick="@(() => RemoveContactChannel(contactChannel.FormId))">
+																		<i class="la la-trash-o fs-3"></i>Remove
+																	</a>
+																</div>
+															</div>
+														</div>
+													}
+												}
+
+												<!--begin::Form group-->
+												<div class="form-group">
+													<a href="javascript:;" class="btn btn-light-primary" @onclick="AddContactChannel">
+														<i class="la la-plus"></i>Add
+													</a>
+												</div>
+												<!--end::Form group-->
+											</div>
+											<!--end: Wizard Step 3-->
+											<!--begin: Wizard Step 4-->
+											<div class="pb-5" data-wizard-type="step-content">
+												<h4 class="mb-10 font-weight-bold text-dark">Fee Accounts</h4>
+
+												@if (!PageModel.FeeAccounts.BankAccounts.Any())
+												{
+													<!--begin::Alert-->
+													<div class="alert alert-primary">
+														<!--begin::Icon-->
+														<span class="svg-icon svg-icon-2hx svg-icon-primary me-3">...</span>
+														<!--end::Icon-->
+														<!--begin::Wrapper-->
+														<div class="d-flex flex-column">
+															<!--begin::Title-->
+															@*<h4 class="mb-1 text-dark">This is an alert</h4>*@
+															<!--end::Title-->
+															<!--begin::Content-->
+															<span>Atleast one fee account is require.</span>
+															<!--end::Content-->
+														</div>
+														<!--end::Wrapper-->
+													</div>
+													<!--end::Alert-->
+												}
+
+												@if (PageModel.FeeAccounts != null && PageModel.FeeAccounts.BankAccounts.Any())
+												{
+													foreach (var (feeAccount, index) in PageModel.FeeAccounts.BankAccounts.Select((v, i) => (v, i)))
+													{
+														<div>
+															
+															<div class="row">
+																<div class="col-xl-9">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Bank<span class="text-danger">*</span></label>
+																		<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.FeeAccounts.BankAccounts[index].BankName)" Value="PageModel.FeeAccounts.BankAccounts[index].BankName" ValueChanged="@((string value) => OnBankValueChanged(value,AccountType.Fee, feeAccount.FormId))">
+																			<option value="">Select</option>
+																			@if (BankLookup != null)
+																			{
+																				foreach (var item in BankLookup)
+																				{
+																					<option value="@item.Text">@item.Text</option>
+																				}
+																			}
+
+																		</InputSelect>
+																		<ValidationMessage For="@(() => PageModel.FeeAccounts.BankAccounts[index].BankName)" class="form-text text-danger" />
+
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-3">
+																	<a href="javascript:;" class="btn btn-sm btn-light-danger mt-3 mt-md-9" @onclick="@(() => RemoveBankAccount(feeAccount.FormId, AccountType.Fee))">
+																		<i class="la la-trash-o fs-3"></i>Remove
+																	</a>
+																</div>
+															</div>
+
+															<div class="row">
+																<div class="col-xl-5">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Account Name<span class="text-danger">*</span></label>
+																		<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.FeeAccounts.BankAccounts[index].AccountName"></InputText>
+																		<ValidationMessage For="@(() => PageModel.FeeAccounts.BankAccounts[index].AccountName)" class="form-text text-danger" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-4">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Account Number<span class="text-danger">*</span></label>
+																		<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.FeeAccounts.BankAccounts[index].AccountNumber"></InputText>
+																		<ValidationMessage For="@(() => PageModel.FeeAccounts.BankAccounts[index].AccountNumber)" class="form-text text-danger" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-3">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<a href="javascript:;" class="btn btn-sm btn-light-success mt-3 mt-md-9" @onclick="@(() => ValidateAccount(feeAccount.FormId, AccountType.Fee))">
+																			Validate
+																		</a>
+																	</div>
+																	<!--end::Input-->
+																</div>
+															</div>
+														</div>
+													}
+												}
+
+												<!--begin::Form group-->
+												<div class="form-group">
+													<a href="javascript:;" class="btn btn-light-primary" @onclick="@(()=>AddBankAccount(AccountType.Fee))">
+														<i class="la la-plus"></i>Add
+													</a>
+												</div>
+												<!--end::Form group-->
+
+											</div>
+											<!--end: Wizard Step 4-->
+											<!--begin: Wizard Step 5-->
+											<div class="pb-5" data-wizard-type="step-content">
+												<h4 class="mb-10 font-weight-bold text-dark">Commission Accounts</h4>
+
+												@if (!PageModel.CommissionAccounts.BankAccounts.Any())
+												{
+													<!--begin::Alert-->
+													<div class="alert alert-primary">
+														<!--begin::Icon-->
+														<span class="svg-icon svg-icon-2hx svg-icon-primary me-3">...</span>
+														<!--end::Icon-->
+														<!--begin::Wrapper-->
+														<div class="d-flex flex-column">
+															<!--begin::Title-->
+															@*<h4 class="mb-1 text-dark">This is an alert</h4>*@
+															<!--end::Title-->
+															<!--begin::Content-->
+															<span>Atleast one commission account is require.</span>
+															<!--end::Content-->
+														</div>
+														<!--end::Wrapper-->
+													</div>
+													<!--end::Alert-->
+												}
+
+												@if (PageModel.CommissionAccounts != null && PageModel.CommissionAccounts.BankAccounts.Any())
+												{
+													foreach (var (commissionAccount, index) in PageModel.CommissionAccounts.BankAccounts.Select((v, i) => (v, i)))
+													{
+														<div>
+															
+
+															<div class="row">
+																<div class="col-xl-9">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Bank<span class="text-danger">*</span></label>
+																		<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.CommissionAccounts.BankAccounts[index].BankName)" Value="PageModel.CommissionAccounts.BankAccounts[index].BankName" ValueChanged="@((string value) => OnBankValueChanged(value, AccountType.Commission, commissionAccount.FormId))">
+																			<option value="">Select</option>
+																			@if (BankLookup != null)
+																			{
+																				foreach (var item in BankLookup)
+																				{
+																					<option value="@item.Text">@item.Text</option>
+																				}
+																			}
+
+																		</InputSelect>
+																		<ValidationMessage For="@(() => PageModel.CommissionAccounts.BankAccounts[index].BankName)" class="form-text text-danger" />
+																	
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-3">
+																	<a href="javascript:;" class="btn btn-sm btn-light-danger mt-3 mt-md-9" @onclick="@(() => RemoveBankAccount(commissionAccount.FormId, AccountType.Commission))">
+																		<i class="la la-trash-o fs-3"></i>Remove
+																	</a>
+																</div>
+															</div>
+														
+															<div class="row">
+																<div class="col-xl-5">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Account Name<span class="text-danger">*</span></label>
+																		<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.CommissionAccounts.BankAccounts[index].AccountName"></InputText>
+																		<ValidationMessage For="@(() => PageModel.CommissionAccounts.BankAccounts[index].AccountName)" class="form-text text-danger" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-4">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Account Number<span class="text-danger">*</span></label>
+																		<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.CommissionAccounts.BankAccounts[index].AccountNumber"></InputText>
+																		<ValidationMessage For="@(() => PageModel.CommissionAccounts.BankAccounts[index].AccountNumber)" class="form-text text-danger" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-3">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<a href="javascript:;" class="btn btn-sm btn-light-success mt-3 mt-md-9" @onclick="@(() => ValidateAccount(commissionAccount.FormId, AccountType.Commission))">
+																			Validate
+																		</a>
+																	</div>
+																	<!--end::Input-->
+																</div>
+															</div>
+														</div>
+													}
+												}
+
+												<!--begin::Form group-->
+												<div class="form-group">
+													<a href="javascript:;" class="btn btn-light-primary" @onclick="@(()=>AddBankAccount(AccountType.Commission))">
+														<i class="la la-plus"></i>Add
+													</a>
+												</div>
+												<!--end::Form group-->
+											</div>
+											<!--end: Wizard Step 5-->
+											<!--begin: Wizard Step 6-->
+											<div class="pb-5" data-wizard-type="step-content">
+												<h4 class="mb-10 font-weight-bold text-dark">Signatories</h4>
+
+
+												<div class="alert alert-secondary" role="alert">
+													<h4 class="alert-heading">Note!</h4>
+													<p>All institution except commercial bank must have a minimum of two signatories. For commercial banks, the roles of Managing Director, Executive Director and Company Secretary are applicable.</p>
+													
+												</div>
+
+												@if (PageModel.Signatories != null && PageModel.Signatories.Signatories.Count > 0)
+												{
+													foreach (var (signatory, index) in PageModel.Signatories.Signatories.Select((v, i) => (v, i)))
+													{
+
+														var firstNameField = $"Signatories[{index}].FirstName";
+														var middleNameField = $"Signatories[{index}].MiddleName";
+														var lastNameField = $"Signatories[{index}].LastName";
+
+														<div>
+															<div class="row">
+																<div class="col-xl-4">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>First Name<span class="text-danger">*</span></label>
+																		<InputText class="form-control form-control-solid form-control-lg" ValueChanged="@((string value) => SignatoryFirstNameHandler(value, signatory.FormId))" Value="@PageModel.Signatories.Signatories[index].FirstName" ValueExpression="@( () => PageModel.Signatories.Signatories[index].FirstName)"></InputText>
+
+
+																		<ValidationMessage For="@(() => PageModel.Signatories.Signatories[index].FirstName)" class="form-text text-danger" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-4">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Middle Name</label>
+																		<InputText class="form-control form-control-solid form-control-lg" ValueChanged="@((string value) => SignatoryMiddleNameHandler(value, signatory.FormId))" Value="@PageModel.Signatories.Signatories[index].MiddleName" ValueExpression="@( () => PageModel.Signatories.Signatories[index].MiddleName)"></InputText>
+
+
+																		<ValidationMessage For="@(() => PageModel.Signatories.Signatories[index].MiddleName)" class="form-text text-danger" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-4">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Last Name<span class="text-danger">*</span></label>
+																		<InputText class="form-control form-control-solid form-control-lg" ValueChanged="@((string value) => SignatoryLastNameHandler(value, signatory.FormId))" Value="@PageModel.Signatories.Signatories[index].LastName" ValueExpression="@( () => PageModel.Signatories.Signatories[index].LastName)"></InputText>
+
+
+																		<ValidationMessage For="@(() => PageModel.Signatories.Signatories[index].LastName)" class="form-text text-danger" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+															</div>
+
+															<div class="row">
+																<div class="col-xl-6">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Email<span class="text-danger">*</span></label>
+																		<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.Signatories.Signatories[index].Email"></InputText>
+																		<ValidationMessage For="@(() => PageModel.Signatories.Signatories[index].Email)" class="form-text text-danger" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-6">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Mobile Phone<span class="text-danger">*</span></label>
+																		<div class="input-group">
+																			<div class="input-group-prepend">
+																				<span class="input-group-text" >
+																					<InputSelect ValueChanged="@((string value) => SignatoryCallCodeHandler(value, signatory.FormId))" Value="@PageModel.Signatories.Signatories[index].MobileNumberCallCode" ValueExpression="@( () => PageModel.Signatories.Signatories[index].MobileNumberCallCode)" style="width:100px;">
+																						<option value=""></option>
+																						@if (CountryCallCodeLookup != null)
+																						{
+																							foreach (var item in CountryCallCodeLookup)
+																							{
+																								<option value="@item.AlternateText2">@item.AlternateText (@item.AlternateText2)</option>
+																							}
+																						}
+																					</InputSelect>
+																				</span>
+																			</div>
+																			<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.Signatories.Signatories[index].MobileNumber"></InputText>
+
+																		</div>
+
+																		<ValidationMessage For="@(() => PageModel.Signatories.Signatories[index].MobileNumberCallCode)" class="form-text text-danger" />
+																		<ValidationMessage For="@(() => PageModel.Signatories.Signatories[index].MobileNumber)" class="form-text text-danger" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+															</div>
+
+															<div class="row">
+																<div class="col-xl-6">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Designation<span class="text-danger">*</span></label>
+																		<InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.Signatories.Signatories[index].Designation"></InputText>
+																		<ValidationMessage For="@(() => PageModel.Signatories.Signatories[index].Designation)" class="form-text text-danger" />
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-4">
+																	<a href="javascript:;" class="btn btn-sm btn-light-danger mt-3 mt-md-9" @onclick="@(() => RemoveSignatory(signatory.FormId))">
+																		<i class="la la-trash-o fs-3"></i>Remove
+																	</a>
+																</div>
+															</div>
+														</div>
+													}
+
+												}
+
+												<!--begin::Form group-->
+												<div class="form-group">
+													<a href="javascript:;" class="btn btn-light-primary" @onclick="AddSignatory">
+														<i class="la la-plus"></i>Add
+													</a>
+												</div>
+												<!--end::Form group-->
+											</div>
+											<!--end: Wizard Step 6-->
+											<!--begin: Wizard Step 7-->
+											<div class="pb-5" data-wizard-type="step-content">
+												<h4 class="mb-10 font-weight-bold text-dark">Documents</h4>
+
+												@if (!string.IsNullOrEmpty(RequireDocuments))
+												{
+													<div class="alert alert-secondary" role="alert">
+														<h4 class="alert-heading">Document Required!</h4>
+														<p>The following are the require documents and possible file type of file to be uploaded:</p>
+														<div class="border-bottom border-white opacity-20 mb-2"></div>
+														<p class="mb-0 font-weight-bold">@RequireDocuments</p>
+														@*<div class="border-bottom border-white opacity-20 mb-2"></div>
+														<p class="mb-0 font-weight-bold">@FileTypes.</p>*@
+													</div>
+												}
+												
+												@if (PageModel.Documents != null && PageModel.Documents.Documents.Count > 0)
+												{
+													foreach (var (document, index) in PageModel.Documents.Documents.Select((v, i) => (v, i)))
+													{
+
+														<input type="hidden" @bind-value="@document.DocumentId" />
+														<div>
+															<div class="row">
+																<div class="col-xl-9">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>Type<span class="text-danger">*</span></label>
+
+																		<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.Documents.Documents[index].DocumentTypeId)" Value="PageModel.Documents.Documents[index].DocumentTypeId" ValueChanged="@((int? value) => OnDocumentTypeValueChanged(value, document.FormId))">
+																			<option value="0" selected="selected">Select Type</option>
+																			@if (DocumentTypeLookup != null)
+																			{
+																				foreach (var item in DocumentTypeLookup)
+																				{
+																					<option value="@item.Value">@item.Text</option>
+																				}
+																			}
+																		</InputSelect>
+																		<ValidationMessage For="@(() => PageModel.Documents.Documents[index].DocumentTypeId)" class="form-text text-danger" />
+
+																		@* <InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.Documents.Documents[index].Title"></InputText>
+																		<ValidationMessage For="@(() => PageModel.Documents.Documents[index].Title)" class="form-text text-danger" /> *@
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-3">
+																	<a href="javascript:;" class="btn btn-sm btn-light-danger mt-3 mt-md-9" @onclick="@(() => RemoveDocument(document.FormId))">
+																		<i class="la la-trash-o fs-3"></i>Remove
+																	</a>
+																</div>
+															</div>
+
+															<div class="row">
+
+																<div class="col-xl-6">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label class=""></label>
+																		<div class="col-form-label">
+																			<div class="checkbox-inline">
+																				<label class="checkbox">
+																					<InputCheckbox @bind-Value="PageModel.Documents.Documents[index].HasIssueDate"></InputCheckbox>
+																					<span></span>has issue date
+																				</label>
+																			</div>
+																		</div>
+																	</div>
+																	<!--end::Input-->
+																</div>
+																<div class="col-xl-6">
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label class=""></label>
+																		<div class="col-form-label">
+																			<div class="checkbox-inline">
+																				<label class="checkbox">
+																					<InputCheckbox @bind-Value="PageModel.Documents.Documents[index].HasExpiryDate"></InputCheckbox>
+																					<span></span>has expiry date
+																				</label>
+																			</div>
+																		</div>
+																	</div>
+																	<!--end::Input-->
+																</div>
+															</div>
+
+															@if (PageModel.Documents.Documents[index].HasIssueDate && PageModel.Documents.Documents[index].HasExpiryDate)
+															{
+																<div class="row">
+
+																	<div class="col-xl-6">
+																		<!--begin::Input-->
+																		<div class="form-group">
+																			<label>Issue Date<span class="text-danger">*</span></label>
+
+																			<CustomInputDateNullable class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.Documents.Documents[index].IssueDate)" Value="PageModel.Documents.Documents[index].IssueDate" ValueChanged="@((DateTime? value) => OnIssueDateValueChanged(value, document.FormId))"></CustomInputDateNullable>
+
+																			<ValidationMessage For="@(() => PageModel.Documents.Documents[index].IssueDate)" class="form-text text-danger" />
+																		</div>
+																		<!--end::Input-->
+																	</div>
+																	<div class="col-xl-6">
+																		<!--begin::Input-->
+																		<div class="form-group">
+																			<label>Expiry Date<span class="text-danger">*</span></label>
+
+																			<CustomInputDateNullable class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.Documents.Documents[index].ExpiryDate)" Value="PageModel.Documents.Documents[index].ExpiryDate" ValueChanged="@((DateTime? value) => OnExpiryDateValueChanged(value, document.FormId))"></CustomInputDateNullable>
+
+																			<ValidationMessage For="@(() => PageModel.Documents.Documents[index].ExpiryDate)" class="form-text text-danger" />
+																		</div>
+																		<!--end::Input-->
+																	</div>
+																</div>
+															}
+															else if (PageModel.Documents.Documents[index].HasIssueDate)
+															{
+																<div class="row">
+																	<div class="col-xl-6">
+																		<!--begin::Input-->
+																		<div class="form-group">
+																			<label>Issue Date<span class="text-danger">*</span></label>
+
+																			<CustomInputDateNullable class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.Documents.Documents[index].IssueDate)" Value="PageModel.Documents.Documents[index].IssueDate" ValueChanged="@((DateTime? value) => OnIssueDateValueChanged(value, document.FormId))"></CustomInputDateNullable>
+
+																			<ValidationMessage For="@(() => PageModel.Documents.Documents[index].IssueDate)" class="form-text text-danger" />
+																		</div>
+																		<!--end::Input-->
+																	</div>
+																	<div class="col-xl-6">
+																	</div>
+																</div>
+															}
+															else if (PageModel.Documents.Documents[index].HasExpiryDate)
+															{
+																<div class="row">
+
+																	<div class="col-xl-6">
+																		<!--begin::Input-->
+																		<div class="form-group">
+																			<label>Expiry Date<span class="text-danger">*</span></label>
+
+																			<CustomInputDateNullable class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.Documents.Documents[index].ExpiryDate)" Value="PageModel.Documents.Documents[index].ExpiryDate" ValueChanged="@((DateTime? value) => OnExpiryDateValueChanged(value, document.FormId))"></CustomInputDateNullable>
+
+																			<ValidationMessage For="@(() => PageModel.Documents.Documents[index].ExpiryDate)" class="form-text text-danger" />
+																		</div>
+																		<!--end::Input-->
+																	</div>
+																</div>
+															}
+
+
+															<div class="row">
+																<!--begin::Input-->
+																<div class="form-group">
+																	<label>File<span class="text-danger">*</span></label>
+
+																	<InputFile OnChange="@((InputFileChangeEventArgs e) => HandleFileSelection(e, document.FormId))" class="form-control form-control-solid form-control-lg" accept=".png,.jpeg,.jpg,.doc,.docx,.csv,.xlsx,.xls" />
+
+																	@if (!string.IsNullOrEmpty(document.SelectedFileName))
+																	{
+																		<label>Selected file: @document.SelectedFileName </label>
+																	}
+
+																	<ValidationMessage For="@(() => PageModel.Documents.Documents[index].FileData)" class="form-text text-muted" />
+
+																</div>
+																<!--end::Input-->
+															</div>
+															
+
+															<div class="row">
+																@if (!string.IsNullOrEmpty(document.LocationUrl))
+																{
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<a href="@document.LocationUrl" target="_blank">Click to view document</a>
+
+																	</div>
+																	<!--end::Input-->
+																}
+															</div>
+															
+
+														</div>
+													}
+												}
+
+												<!--begin::Form group-->
+												<div class="form-group">
+													<a href="javascript:;" class="btn btn-light-primary" @onclick="AddDocument">
+														<i class="la la-plus"></i>Add
+													</a>
+												</div>
+												<!--end::Form group-->
+											</div>
+											<!--end: Wizard Step 7-->
+											<!--begin: Wizard Step 8-->
+											<div class="pb-5" data-wizard-type="step-content">
+												<h4 class="mb-10 font-weight-bold text-dark">Additional Informations</h4>
+												@if (PageModel.CustomFields != null && PageModel.CustomFields.CustomFields.Count > 0)
+												{
+
+													@foreach (var (field, index) in PageModel.CustomFields.CustomFields.Select((v, i) => (v, i)))
+													{
+
+														<div class="row">
+															<input type="hidden" @bind-value="@field.FieldId" />
+															
+															<div class="col-xl-12">
+																<!--begin::Input-->
+																<div class="form-group">
+																	<label>@field.Field
+																		@if (field.Compulsory)
+																		{
+																			<span class="text-danger">*</span>
+																		}
+																	</label>
+
+																	<InputText class="form-control form-control-lg form-control-solid" @bind-Value="PageModel.CustomFields.CustomFields[index].Response"></InputText>
+																	<ValidationMessage For="@(() => PageModel.CustomFields.CustomFields[index].Response)" class="form-text text-danger" />
+																</div>
+																<!--end::Input-->
+															</div>
+														</div>
+									
+													}
+												}
+
+
+											</div>
+											<!--end: Wizard Step 8-->
+
+											<!--begin: Wizard Step 8-->
+											<div class="pb-5" data-wizard-type="step-content">
+												<!--begin::Wrapper-->
+												<div class="w-100">
+													<!--begin::Heading-->
+													<div class="pb-8 pb-lg-10">
+														<!--begin::Title-->
+														<h2 class="fw-bolder text-dark">Review and Submit</h2>
+														<!--end::Title-->
+													</div>
+													<!--end::Heading-->
+													<!--begin::Body-->
+													<button type="button" class="btn btn-primary btn-lg btn-block" @onclick="ShowReview">Click to review</button>
+													<!--end::Body-->
+												</div>
+												<!--end::Wrapper-->
+
+											</div>
+											<!--end: Wizard Step 8-->
+											<!--begin: Wizard Actions-->
+											<div class="d-flex justify-content-between border-top mt-5 pt-10">
+												<div class="mr-2">
+													@*<button type="submit">Save</button>*@
+													<button type="button" class="btn btn-light-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-prev">Previous</button>
+												</div>
+												<div>
+													<button type="button" class="btn btn-success font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-submit">Submit</button>
+
+
+													<button type="button" class="btn btn-primary font-weight-bolder text-uppercase px-9 py-4" data-wizard-type="action-next">Next</button>
+												</div>
+											</div>
+											<!--end: Wizard Actions-->
+									
+									@*</form>*@
+								</div>
+								<!--end: Wizard-->
+							</div>
+							<!--end: Wizard Form-->
+						</div>
+						<!--end: Wizard Body-->
+					</div>
+					<!--end: Wizard-->
+						</EditForm>
+					}
+
+
+					
+				</div>
+			</div>
+		</div>
+		<!--end::Container-->
+	</div>
+	<!--end::Entry-->
+</div>
+<!--end::Content-->
+
+<ReviewDialog @ref="ReviewDialog"></ReviewDialog>

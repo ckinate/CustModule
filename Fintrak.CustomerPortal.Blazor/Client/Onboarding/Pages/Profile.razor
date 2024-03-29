@@ -1,0 +1,163 @@
+﻿@page "/onboarding/profile"
+
+@inherits PageBase
+<PageTitle>Enqueries - Profile</PageTitle>
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+	<!--begin::Subheader-->
+	<div class="subheader py-2 py-lg-6 subheader-transparent" id="kt_subheader">
+		<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+			<!--begin::Info-->
+			<div class="d-flex align-items-center flex-wrap mr-1">
+				<!--begin::Mobile Toggle-->
+				<button class="burger-icon burger-icon-left mr-4 d-inline-block d-lg-none" id="kt_subheader_mobile_toggle">
+					<span></span>
+				</button>
+				<!--end::Mobile Toggle-->
+				<!--begin::Page Heading-->
+				<div class="d-flex align-items-baseline flex-wrap mr-5">
+					<!--begin::Page Title-->
+					<h5 class="text-dark font-weight-bold my-1 mr-5">Queries</h5>
+					<!--end::Page Title-->
+					<!--begin::Breadcrumb-->
+					<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+						
+						<li class="breadcrumb-item text-muted">
+							<a href="/onboarding/profile" class="text-muted">Profile</a>
+						</li>
+						<li class="breadcrumb-item text-muted">
+							<a href="#" class="text-muted">Enqueries</a>
+						</li>
+					</ul>
+					<!--end::Breadcrumb-->
+				</div>
+				<!--end::Page Heading-->
+			</div>
+			<!--end::Info-->
+			<!--begin::Toolbar-->
+			<div class="d-flex align-items-center">
+				
+			</div>
+			<!--end::Toolbar-->
+		</div>
+	</div>
+	<!--end::Subheader-->
+	<!--begin::Entry-->
+	<div class="d-flex flex-column-fluid">
+		<!--begin::Container-->
+		<div class="container">
+			<!--begin::Profile Change Password-->
+			<div class="d-flex flex-row">
+				<ProfileSidebar ActivePage="Queries" PageModel="CurrentUser"></ProfileSidebar>
+				<!--begin::Content-->
+				<div class="flex-row-fluid ml-lg-8">
+					<!--begin::Card-->
+					<div class="card card-custom">
+						<!--begin::Header-->
+						<div class="card-header py-3">
+							<div class="card-title align-items-start flex-column">
+								<h3 class="card-label font-weight-bolder text-dark">Enqueries</h3>
+								<span class="text-muted font-weight-bold font-size-sm mt-1">View pending enqueries</span>
+							</div>
+							<div class="card-toolbar">
+								@*<button type="reset" class="btn btn-success mr-2">Save Changes</button>
+								<button type="reset" class="btn btn-secondary">Cancel</button>*@
+							</div>
+						</div>
+						<!--end::Header-->
+						<!--begin::Form-->
+						<form class="form">
+							<div class="card-body">
+
+								@if (PageModel != null && PageModel.Count > 0)
+								{
+									foreach (var query in PageModel)
+									{
+										<!--begin::Alert-->
+										<div class="alert alert-custom alert-light-danger fade show mb-10" role="alert">
+											<div class="alert-icon">
+												<span class="svg-icon svg-icon-3x svg-icon-danger">
+													<!--begin::Svg Icon | path:assets/media/svg/icons/Code/Info-circle.svg-->
+													<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+														<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+															<rect x="0" y="0" width="24" height="24" />
+															<circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+															<rect fill="#000000" x="11" y="10" width="2" height="7" rx="1" />
+															<rect fill="#000000" x="11" y="7" width="2" height="2" rx="1" />
+														</g>
+													</svg>
+													<!--end::Svg Icon-->
+												</span>
+											</div>
+											<div class="alert-text font-weight-bold">
+												@if(query.ResourceType == ResourceType.Customer)
+												{
+													<span>Customer</span>
+												}
+												else
+												{
+													<span class="bold">Customer Product</span>
+												}
+												<p>@query.QueryMessage</p>
+											</div>
+											<div class="alert-close">
+												<button type="button" @onclick="@(() => ResponseToQuery(query.Id))" data-toggle="tooltip" data-theme="dark" title="Response to enquery">
+													<span aria-hidden="true">
+														<i class="ki ki-round text-danger"></i>
+													</span>
+												</button>
+											</div>
+										</div>
+										<!--end::Alert-->
+									}
+								}
+								else
+								{
+									<!--begin::Alert-->
+									<div class="alert alert-custom alert-light-success fade show mb-10" role="alert">
+										<div class="alert-icon">
+											<span class="svg-icon svg-icon-3x svg-icon-success">
+												<!--begin::Svg Icon | path:assets/media/svg/icons/Code/Info-circle.svg-->
+												<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px" viewBox="0 0 24 24" version="1.1">
+													<g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+														<rect x="0" y="0" width="24" height="24" />
+														<circle fill="#000000" opacity="0.3" cx="12" cy="12" r="10" />
+														<rect fill="#000000" x="11" y="10" width="2" height="7" rx="1" />
+														<rect fill="#000000" x="11" y="7" width="2" height="2" rx="1" />
+													</g>
+												</svg>
+												<!--end::Svg Icon-->
+											</span>
+										</div>
+										<div class="alert-text font-weight-bold">
+											There are no pending enqueries at this time!
+										</div>
+										@*<div class="alert-close">
+											<button type="button" @onclick="ResponseToQuery()">
+												<span aria-hidden="true">
+													<i class="ki ki-close"></i>
+												</span>
+											</button>
+										</div>*@
+									</div>
+									<!--end::Alert-->
+								}
+							</div>
+						</form>
+						<!--end::Form-->
+					</div>
+				</div>
+				<!--end::Content-->
+			</div>
+			<!--end::Profile Change Password-->
+		</div>
+		<!--end::Container-->
+	</div>
+	<!--end::Entry-->
+</div>
+<!--end::Content-->
+
+<RespondToQueryDialog @ref="RespondToQueryDialog" OnQueryResponse="OnQueryResponse"></RespondToQueryDialog>
+
+

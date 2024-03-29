@@ -1,0 +1,102 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32804.467
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerPortal.Web", "CustomerPortal.Web\CustomerPortal.Web.csproj", "{1795405C-262D-4EE4-92A9-A84C73E8EC25}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CustomerPortal.Data", "CustomerPortal.Data\CustomerPortal.Data.csproj", "{B775B39E-03EE-4EAF-8147-C1D9BA08A89A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{64663586-1D03-4611-B2B6-BF952C540069}"
+	ProjectSection(SolutionItems) = preProject
+		Migration.txt = Migration.txt
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{2AC4491F-B70B-461A-9A79-03459C22BDA1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{37430419-1A0D-4EF9-BA48-027BA4475BDA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{AA766CFC-5651-482D-AABF-616EC261B00B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{A95D1280-AE37-4B9D-A92F-A9B43CCC974E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{654F6A37-33CC-4D54-BA65-24D90A907602}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintrak.CustomerPortal.Blazor.Shared", "Fintrak.CustomerPortal.Blazor.Shared\Fintrak.CustomerPortal.Blazor.Shared.csproj", "{531C7407-4509-491A-AC67-0B221F3CACDC}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintrak.CustomerPortal.Application", "Fintrak.CustomerPortal.Application\Fintrak.CustomerPortal.Application.csproj", "{F1ED1352-0D8E-41BC-B3C7-06570277D409}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintrak.CustomerPortal.Domain", "Fintrak.CustomerPortal.Domain\Fintrak.CustomerPortal.Domain.csproj", "{9AC8489D-285A-4F00-9772-C260B6E84319}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintrak.CustomerPortal.Infrastructure", "Fintrak.CustomerPortal.Infrastructure\Fintrak.CustomerPortal.Infrastructure.csproj", "{DB5FF43C-D863-460E-99F1-11A476608A01}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintrak.CustomerPortal.Blazor.Server", "Fintrak.CustomerPortal.Blazor\Server\Fintrak.CustomerPortal.Blazor.Server.csproj", "{C3F5CE10-0857-434B-8BCA-159A884433FF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintrak.CustomerPortal.Blazor.Client", "Fintrak.CustomerPortal.Blazor\Client\Fintrak.CustomerPortal.Blazor.Client.csproj", "{4A547C42-6BAE-47F7-B13B-DEDBBBAAB792}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Prototype", "Prototype", "{2760AD1A-97D5-4E7E-BD78-FEFFE7305230}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Fintrak.CustomerPortal.Infrastructure.Integration", "Fintrak.CustomerPortal.Infrastructure.Integration\Fintrak.CustomerPortal.Infrastructure.Integration.csproj", "{C4BEF2CB-35F4-4271-93BE-2998E660B0FF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1795405C-262D-4EE4-92A9-A84C73E8EC25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1795405C-262D-4EE4-92A9-A84C73E8EC25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1795405C-262D-4EE4-92A9-A84C73E8EC25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1795405C-262D-4EE4-92A9-A84C73E8EC25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B775B39E-03EE-4EAF-8147-C1D9BA08A89A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B775B39E-03EE-4EAF-8147-C1D9BA08A89A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B775B39E-03EE-4EAF-8147-C1D9BA08A89A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B775B39E-03EE-4EAF-8147-C1D9BA08A89A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{531C7407-4509-491A-AC67-0B221F3CACDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{531C7407-4509-491A-AC67-0B221F3CACDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{531C7407-4509-491A-AC67-0B221F3CACDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{531C7407-4509-491A-AC67-0B221F3CACDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1ED1352-0D8E-41BC-B3C7-06570277D409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1ED1352-0D8E-41BC-B3C7-06570277D409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1ED1352-0D8E-41BC-B3C7-06570277D409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1ED1352-0D8E-41BC-B3C7-06570277D409}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AC8489D-285A-4F00-9772-C260B6E84319}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AC8489D-285A-4F00-9772-C260B6E84319}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AC8489D-285A-4F00-9772-C260B6E84319}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AC8489D-285A-4F00-9772-C260B6E84319}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB5FF43C-D863-460E-99F1-11A476608A01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB5FF43C-D863-460E-99F1-11A476608A01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB5FF43C-D863-460E-99F1-11A476608A01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB5FF43C-D863-460E-99F1-11A476608A01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3F5CE10-0857-434B-8BCA-159A884433FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3F5CE10-0857-434B-8BCA-159A884433FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3F5CE10-0857-434B-8BCA-159A884433FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3F5CE10-0857-434B-8BCA-159A884433FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A547C42-6BAE-47F7-B13B-DEDBBBAAB792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A547C42-6BAE-47F7-B13B-DEDBBBAAB792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A547C42-6BAE-47F7-B13B-DEDBBBAAB792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A547C42-6BAE-47F7-B13B-DEDBBBAAB792}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4BEF2CB-35F4-4271-93BE-2998E660B0FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4BEF2CB-35F4-4271-93BE-2998E660B0FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4BEF2CB-35F4-4271-93BE-2998E660B0FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4BEF2CB-35F4-4271-93BE-2998E660B0FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{1795405C-262D-4EE4-92A9-A84C73E8EC25} = {2760AD1A-97D5-4E7E-BD78-FEFFE7305230}
+		{B775B39E-03EE-4EAF-8147-C1D9BA08A89A} = {2760AD1A-97D5-4E7E-BD78-FEFFE7305230}
+		{654F6A37-33CC-4D54-BA65-24D90A907602} = {A95D1280-AE37-4B9D-A92F-A9B43CCC974E}
+		{531C7407-4509-491A-AC67-0B221F3CACDC} = {2AC4491F-B70B-461A-9A79-03459C22BDA1}
+		{F1ED1352-0D8E-41BC-B3C7-06570277D409} = {37430419-1A0D-4EF9-BA48-027BA4475BDA}
+		{9AC8489D-285A-4F00-9772-C260B6E84319} = {37430419-1A0D-4EF9-BA48-027BA4475BDA}
+		{DB5FF43C-D863-460E-99F1-11A476608A01} = {AA766CFC-5651-482D-AABF-616EC261B00B}
+		{C3F5CE10-0857-434B-8BCA-159A884433FF} = {654F6A37-33CC-4D54-BA65-24D90A907602}
+		{4A547C42-6BAE-47F7-B13B-DEDBBBAAB792} = {654F6A37-33CC-4D54-BA65-24D90A907602}
+		{C4BEF2CB-35F4-4271-93BE-2998E660B0FF} = {AA766CFC-5651-482D-AABF-616EC261B00B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C34368AB-0B3F-443B-BEBE-7D1CDC45C458}
+	EndGlobalSection
+EndGlobal

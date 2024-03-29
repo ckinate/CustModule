@@ -1,0 +1,132 @@
+﻿@using Blazored.FluentValidation
+
+@inherits PageBase
+
+@if (ShowDialog)
+{
+
+    <!-- Modal-->
+    <div class="modal fade show d-block" id="exampleModalSizeLg" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+
+            <div class="modal-content">
+                <div class="">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Enquery Response</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close" @onclick="Close">
+                            <i aria-hidden="true" class="ki ki-close"></i>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        @if(PageModel != null)
+                        {
+                            <EditForm Model="PageModel">
+
+                                <FluentValidationValidator />
+
+                                <p>@PageModel.InvoiceCode</p>
+
+                                <div class="form-group row">
+                                    <label class="col-2 col-form-label">Receipt No</label>
+                                    <div class="col-10">
+                                        <InputText class="form-control" @bind-Value="@PageModel.ReceiptNo" />
+                                        <ValidationMessage For="@(() => PageModel.ReceiptNo)" class="form-text text-danger" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-2 col-form-label">Amount Paid</label>
+                                    <div class="col-10">
+                                        <InputNumber class="form-control" @bind-Value="@PageModel.AmountPaid" />
+                                        <ValidationMessage For="@(() => PageModel.AmountPaid)" class="form-text text-danger" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-2 col-form-label">File</label>
+                                    <div class="col-10">
+                                        <InputFile OnChange="@((InputFileChangeEventArgs e) => HandleFileSelection(e))" class="form-control" />
+                                        @if (!string.IsNullOrEmpty(PageModel.SelectedFileName))
+                                        {
+                                            <label>Selected file: @PageModel.SelectedFileName </label>
+                                        }
+                                        <ValidationMessage For="@(() => PageModel.FileData)" class="form-text text-danger" />
+                                    </div>
+
+                                </div>
+                                <!--end::Input-->
+                               @*  @if (!string.IsNullOrEmpty(PageModel.Location))
+                                {
+                                    <!--begin::Input-->
+                                    <div class="form-group">
+                                        <a href="@PageModel.Location" target="_blank">Click to view</a>
+
+                                    </div>
+                                    <!--end::Input-->
+                                } *@
+
+                                <div class="form-group">
+                                    <label class=""></label>
+                                    <div class="col-form-label">
+                                        <div class="checkbox-inline">
+                                            <label class="checkbox">
+                                                <InputCheckbox @bind-Value="PageModel.ExcludeVat"></InputCheckbox>
+                                                <span></span>Exclude VAT
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @if (PageModel.ExcludeVat)
+                                {
+                                    <div class="form-group row">
+                                        <label class="col-2 col-form-label">VAT Rate</label>
+                                        <div class="col-10">
+                                            <InputNumber class="form-control" @bind-Value="@PageModel.VatValue" />
+                                            <ValidationMessage For="@(() => PageModel.VatValue)" class="form-text text-danger" />
+                                        </div>
+                                    </div>
+                                }
+
+                                <div class="form-group">
+                                    <label class=""></label>
+                                    <div class="col-form-label">
+                                        <div class="checkbox-inline">
+                                            <label class="checkbox">
+                                                <InputCheckbox @bind-Value="PageModel.ExcludeWitholdingTax"></InputCheckbox>
+                                                <span></span>Exclude Withoding Tax
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                @if (PageModel.ExcludeWitholdingTax)
+                                {
+                                    <div class="form-group row">
+                                        <label class="col-2 col-form-label">VAT Rate</label>
+                                        <div class="col-10">
+                                            <InputNumber class="form-control" @bind-Value="@PageModel.WitholdingTaxValue" />
+                                            <ValidationMessage For="@(() => PageModel.WitholdingTaxValue)" class="form-text text-danger" />
+                                        </div>
+                                    </div>
+                                }
+                            </EditForm>
+                        } 
+                      
+                    </div>
+                    <div class="modal-footer">
+                        <div class="col text-left">
+                            <button type="button" class="btn btn-light-primary font-weight-bold mr-2" @onclick="Close">Cancel</button>
+                          
+                        </div>
+                        <div class="col text-right">
+                            <button type="button" class="btn btn-secondary font-weight-bold mr-2" @onclick="OnSaveClick">Save</button>
+                        </div>
+                    </div>     
+                </div>
+
+                
+            </div>
+        </div>
+    </div>
+}

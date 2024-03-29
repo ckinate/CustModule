@@ -1,0 +1,7 @@
+Name,Description,ImageUrl,Active,Id
+Addidas,,https://localhost:7177/uploads/brands/brand_addidas.jpeg,True,25
+Test,Test Business Nature,https://localhost:7177/uploads/brands/brand_test.jpeg,True,3
+Test 3,,https://localhost:7177/uploads/brands/brand_test 2.jpeg,False,24
+Test 6,,https://localhost:7177/uploads/brands/brand_test 6.jpeg,False,26
+Test 7,,https://localhost:7177/uploads/brands/brand_test 7.jpeg,False,27
+Test Brand,Test Business Description,https://localhost:7177/uploads/brands/brand_test brand.jpeg,True,1

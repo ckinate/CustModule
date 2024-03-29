@@ -1,0 +1,53 @@
+﻿@page
+@model RegisterConfirmationModel
+@{
+    ViewData["Title"] = "Register confirmation";
+}
+
+<!--begin::Main-->
+<div class="d-flex flex-column flex-root">
+	<!--begin::Login-->
+	<div class="login login-4 login-signin-on d-flex flex-row-fluid" id="kt_login">
+		<div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url('/assets/media/bg/bg-3.jpg');">
+			<div class="login-form text-center p-7 position-relative overflow-hidden">
+				<!--begin::Login Header-->
+				<div class="d-flex flex-center mb-15">
+					<a href="#">
+						<img src="~/assets/media/logos/nibbs_logo.png" class="max-h-75px" alt="" />
+					</a>
+				</div>
+				<!--end::Login Header-->
+				<!--begin::Login Sign in form-->
+				<div class="login-signin">
+					<div class="mb-20">
+						<h3>Register confirmation</h3>
+						<div class="text-muted font-weight-bold"> Please check your email to confirm your account.</div>
+					</div>
+					
+				</div>
+				<!--end::Login Sign in form-->
+
+			</div>
+		</div>
+	</div>
+	<!--end::Login-->
+</div>
+<!--end::Main-->
+
+@*<h1>@ViewData["Title"]</h1>
+@{
+    if (@Model.DisplayConfirmAccountLink)
+    {
+<p>
+    This app does not currently have a real email sender registered, see <a href="https://aka.ms/aspaccountconf">these docs</a> for how to configure a real email sender.
+    Normally this would be emailed: <a id="confirm-link" href="@Model.EmailConfirmationUrl">Click here to confirm your account</a>
+</p>
+    }
+    else
+    {
+<p>
+        Please check your email to confirm your account.
+</p>
+    }
+}*@
+

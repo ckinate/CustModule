@@ -1,0 +1,22 @@
+ERP AZURE APP - TEST
+
+tenantName = nibsstest.onmicrosoft.com
+TENANT_ID=279c7b1b-ba06-427b-a681-c8a5492d293d
+AZURE_CLOUD_ID=https://login.microsoftonline.com
+REDIRECT_URI= https://nibsserp.nibss-plc.com.ng
+CLIENT_ID= b893a39a-b0cb-4d6b-950f-b93c5b9e3866
+CLIENT_SECRET= N_T8Q~Eaq_sRaFE2-Cewb.xM6eL63IwSE54d3cw7
+IDENTITY_METADATA=https://login.microsoftonline.com/279c7b1b-ba06-427b-a681-c8a5492d293d/v2.0/.well-known/openid-configuration
+CLIENT_ISB2C=false
+VALIDATE_ISSUER=false
+PASS_REQUEST_TO_CALLBACK=false
+LOGGING_LEVEL=info
+ALLOW_MULTI_AUDIENCE=false
+ACCESS_TOKEN_VERSION= 2
+
+
+
+
+
+
+

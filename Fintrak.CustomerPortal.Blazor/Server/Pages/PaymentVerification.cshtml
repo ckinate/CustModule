@@ -1,0 +1,19 @@
+﻿@page
+@model Fintrak.CustomerPortal.Blazor.Server.Pages.PaymentVerificationModel.PaymentInputModel
+@{
+    ViewData["Title"] = "Payment Verification";
+}
+
+@attribute [IgnoreAntiforgeryToken]
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    @if (Model != null)
+    {
+        <p>CpayRef: @Model.CpayTxnRef</p>
+    }
+    else
+    {
+        <p>CpayRef: Nothing</p>
+    }
+</div>

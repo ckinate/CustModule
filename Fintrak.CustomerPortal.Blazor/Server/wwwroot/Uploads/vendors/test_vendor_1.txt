@@ -1,0 +1,26 @@
+FMBN Active Directory Endpoint
+
+Supported Request Method: GET
+Url: http://172.22.200.27:4443/connectfmbnad
+
+The API expects a json body playload in the following format
+{"username":"fmbnadusername",
+   "password":"password",
+   
+}
+
+The API responds with the following:
+
+{"status":TRUE or FALSE,
+   "message": "Message from API"
+}
+
+Server Response code is also embedded 
+
+200 Successful
+400 Bad Request
+
+Api Test Parameter
+Username: fintrak.adconnect
+Password: fintrak
+

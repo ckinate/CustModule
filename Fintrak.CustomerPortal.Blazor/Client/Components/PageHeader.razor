@@ -1,0 +1,122 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@inject NavigationManager Navigation
+
+<!--begin::Header-->
+<div id="kt_header" class="header flex-column header-fixed">
+	<!--begin::Top-->
+	<div class="header-top">
+		<!--begin::Container-->
+		<div class="container">
+			<!--begin::Left-->
+			<div class="d-none d-lg-flex align-items-center mr-3">
+				<!--begin::Logo-->
+				<a href="#" class="mr-20">
+					<img alt="Logo" src="assets/media/logos/nibbs_logo.png" class="max-h-50px" />
+				</a>
+				<!--end::Logo-->
+
+			</div>
+			<!--end::Left-->
+			<!--begin::Topbar-->
+			<div class="topbar">
+
+				<!--begin::User-->
+				<AuthorizeView>
+					<Authorized>
+						<div class="topbar-item">
+							<div class="btn btn-icon btn-hover-transparent-white w-auto d-flex align-items-center btn-lg px-2" id="kt_quick_user_toggle">
+								@if (CurrentUser != null)
+								{
+									<div class="d-flex flex-column text-right pr-3">
+										<span class="text-white opacity-50 font-weight-bold font-size-sm d-none d-md-inline">
+											@* @context.User.Identity?.Name *@
+											@CurrentUser.AdminName
+										</span>
+										@*<span class="text-white font-weight-bolder font-size-sm d-none d-md-inline">UX Designer</span>*@
+									</div>
+									<span class="symbol symbol-35">
+										<span class="symbol-label font-size-h5 font-weight-bold text-white bg-white-o-30">@CurrentUser.AdminName.Substring(0, 1).ToUpper()</span>
+									</span>
+								}
+							</div>
+						</div>
+					</Authorized>
+				</AuthorizeView>
+				
+				<!--end::User-->
+			</div>
+			<!--end::Topbar-->
+		</div>
+		<!--end::Container-->
+	</div>
+	<!--end::Top-->
+
+	<AuthorizeView>
+		<Authorized>
+			<!--begin::Bottom-->
+			@if (ShowQuickMenu)
+			{
+				<div class="header-bottom">
+					<!--begin::Container-->
+					<div class="container">
+						<!--begin::Header Menu Wrapper-->
+						<div class="header-menu-wrapper header-menu-wrapper-left" id="kt_header_menu_wrapper">
+							<!--begin::Header Menu-->
+							<div id="kt_header_menu" class="header-menu header-menu-left header-menu-mobile header-menu-layout-default">
+								<!--begin::Header Nav-->
+								<ul class="menu-nav">
+									<li class="menu-item" data-menu-toggle="hover" aria-haspopup="true">
+										<a href="/onboarding/dashboard" class="menu-link">
+											<span class="menu-text">Dashboard</span>
+											<span class="menu-desc">Onboard Products &amp; View Trackers</span>
+											<i class="menu-arrow"></i>
+										</a>
+									</li>
+									<li class="menu-item" data-menu-toggle="hover" aria-haspopup="true">
+										<a href="/onboarding/viewregistration" class="menu-link">
+											<span class="menu-text">Company</span>
+											<span class="menu-desc">View Company Info</span>
+											<i class="menu-arrow"></i>
+										</a>
+									</li>
+
+									<li class="menu-item" data-menu-toggle="hover" aria-haspopup="true">
+										<a href="/onboarding/signing" class="menu-link">
+											<span class="menu-text">Signing</span>
+											<span class="menu-desc">View &amp; Upload Documents</span>
+											<i class="menu-arrow"></i>
+										</a>
+									</li>
+									<li class="menu-item" data-menu-toggle="hover" aria-haspopup="true">
+										<a href="/onboarding/invoices" class="menu-link">
+											<span class="menu-text">Invoices</span>
+											<span class="menu-desc">Download &amp; Make Payment</span>
+											<i class="menu-arrow"></i>
+										</a>
+									</li>
+									<li class="menu-item" data-menu-toggle="hover" aria-haspopup="true">
+										<a href="/onboarding/signing" class="menu-link">
+											<span class="menu-text">Enqueries</span>
+											<span class="menu-desc">View &amp; Response to Enqueries</span>
+											<i class="menu-arrow"></i>
+										</a>
+									</li>
+								</ul>
+								<!--end::Header Nav-->
+							</div>
+							<!--end::Header Menu-->
+						</div>
+						<!--end::Header Menu Wrapper-->
+					</div>
+					<!--end::Container-->
+				</div>
+			}
+			
+	<!--end::Bottom-->
+		</Authorized>
+	</AuthorizeView>
+
+	
+</div>
+<!--end::Header-->

@@ -1,0 +1,1008 @@
+﻿@{
+    ViewData["Title"] = "Registration";
+}
+
+
+
+	<!--begin::Toolbar-->
+					<div class="toolbar py-5 py-lg-5" id="kt_toolbar">
+						<!--begin::Container-->
+						<div id="kt_toolbar_container" class="container-xxl d-flex flex-stack flex-wrap">
+							<!--begin::Page title-->
+							<div class="page-title d-flex flex-column me-3">
+								<!--begin::Title-->
+			<h1 class="d-flex text-dark fw-bolder my-1 fs-3">Customer Registration</h1>
+								<!--end::Title-->
+								<!--begin::Breadcrumb-->
+								<ul class="breadcrumb breadcrumb-dot fw-bold text-gray-600 fs-7 my-1">
+									<!--begin::Item-->
+									<li class="breadcrumb-item text-gray-600">
+										<a asp-action="Index" asp-controller="Home" class="text-gray-600 text-hover-primary">Home</a>
+									</li>
+									<!--end::Item-->
+									<!--begin::Item-->
+									<li class="breadcrumb-item text-gray-500">Customer</li>
+									<!--end::Item-->
+									<!--begin::Item-->
+									<li class="breadcrumb-item text-gray-500">Registration</li>
+									<!--end::Item-->
+								</ul>
+								<!--end::Breadcrumb-->
+							</div>
+							<!--end::Page title-->
+							
+						</div>
+						<!--end::Container-->
+					</div>
+					<!--end::Toolbar-->
+									<!--begin::Container-->
+					<div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
+						<!--begin::Post-->
+						<div class="content flex-row-fluid" id="kt_content">
+							<!--begin::Stepper-->
+							<div class="stepper stepper-pills stepper-column d-flex flex-column flex-xl-row flex-row-fluid" id="kt_create_account_stepper">
+								<!--begin::Aside-->
+								<div class="card d-flex justify-content-center justify-content-xl-start flex-row-auto w-100 w-xl-300px w-xxl-400px me-9">
+									<!--begin::Wrapper-->
+									<div class="card-body px-6 px-lg-10 px-xxl-15 py-20">
+										<!--begin::Nav-->
+										<div class="stepper-nav">
+
+											<!--begin::Step 1-->
+											<div class="stepper-item current" data-kt-stepper-element="nav">
+												<!--begin::Line-->
+												<div class="stepper-line w-40px"></div>
+												<!--end::Line-->
+												<!--begin::Icon-->
+												<div class="stepper-icon w-40px h-40px">
+													<i class="stepper-check fas fa-check"></i>
+													<span class="stepper-number">1</span>
+												</div>
+												<!--end::Icon-->
+												<!--begin::Label-->
+												<div class="stepper-label">
+													<h3 class="stepper-title">Institution Type</h3>
+								<div class="stepper-desc fw-bold">Select your Institution Type</div>
+												</div>
+												<!--end::Label-->
+											</div>
+											<!--end::Step 1-->
+
+											<!--begin::Step 2-->
+											<div class="stepper-item" data-kt-stepper-element="nav">
+												<!--begin::Line-->
+												<div class="stepper-line w-40px"></div>
+												<!--end::Line-->
+												<!--begin::Icon-->
+												<div class="stepper-icon w-40px h-40px">
+													<i class="stepper-check fas fa-check"></i>
+													<span class="stepper-number">2</span>
+												</div>
+												<!--end::Icon-->
+												<!--begin::Label-->
+												<div class="stepper-label">
+													<h3 class="stepper-title">Official Information</h3>
+													<div class="stepper-desc fw-bold">Setup Your Official Information</div>
+												</div>
+												<!--end::Label-->
+											</div>
+											<!--end::Step 2-->
+
+											<!--begin::Step 3-->
+											<div class="stepper-item" data-kt-stepper-element="nav">
+												<!--begin::Line-->
+												<div class="stepper-line w-40px"></div>
+												<!--end::Line-->
+												<!--begin::Icon-->
+												<div class="stepper-icon w-40px h-40px">
+													<i class="stepper-check fas fa-check"></i>
+													<span class="stepper-number">3</span>
+												</div>
+												<!--end::Icon-->
+												<!--begin::Label-->
+												<div class="stepper-label">
+								<h3 class="stepper-title">General Information</h3>
+													<div class="stepper-desc fw-bold">Setup Your General Information</div>
+												</div>
+												<!--end::Label-->
+											</div>
+											<!--end::Step 3-->
+
+											<!--begin::Step 4-->
+											<div class="stepper-item" data-kt-stepper-element="nav">
+												<!--begin::Line-->
+												<div class="stepper-line w-40px"></div>
+												<!--end::Line-->
+												<!--begin::Icon-->
+												<div class="stepper-icon w-40px h-40px">
+													<i class="stepper-check fas fa-check"></i>
+													<span class="stepper-number">4</span>
+												</div>
+												<!--end::Icon-->
+												<!--begin::Label-->
+												<div class="stepper-label">
+													<h3 class="stepper-title">Key Contact Person(s)</h3>
+													<div class="stepper-desc fw-bold">Setup Your Contact Person(s)</div>
+												</div>
+												<!--end::Label-->
+											</div>
+											<!--end::Step 4-->
+
+											<!--begin::Step 5-->
+											<div class="stepper-item" data-kt-stepper-element="nav">
+												<!--begin::Line-->
+												<div class="stepper-line w-40px"></div>
+												<!--end::Line-->
+												<!--begin::Icon-->
+												<div class="stepper-icon w-40px h-40px">
+													<i class="stepper-check fas fa-check"></i>
+													<span class="stepper-number">5</span>
+												</div>
+												<!--end::Icon-->
+												<!--begin::Label-->
+												<div class="stepper-label">
+													<h3 class="stepper-title">Document(s)</h3>
+													<div class="stepper-desc fw-bold">Upload Document(s)</div>
+												</div>
+												<!--end::Label-->
+											</div>
+											<!--end::Step 5-->
+
+											<!--begin::Step 6-->
+											<div class="stepper-item" data-kt-stepper-element="nav">
+												<!--begin::Line-->
+												<div class="stepper-line w-40px"></div>
+												<!--end::Line-->
+												<!--begin::Icon-->
+												<div class="stepper-icon w-40px h-40px">
+													<i class="stepper-check fas fa-check"></i>
+													<span class="stepper-number">6</span>
+												</div>
+												<!--end::Icon-->
+												<!--begin::Label-->
+												<div class="stepper-label">
+													<h3 class="stepper-title">Bank Information</h3>
+													<div class="stepper-desc fw-bold">Setup your Bank Information</div>
+												</div>
+												<!--end::Label-->
+											</div>
+											<!--end::Step 6-->
+
+											<!--begin::Step 7-->
+											<div class="stepper-item" data-kt-stepper-element="nav">
+												<!--begin::Line-->
+												<div class="stepper-line w-40px"></div>
+												<!--end::Line-->
+												<!--begin::Icon-->
+												<div class="stepper-icon w-40px h-40px">
+													<i class="stepper-check fas fa-check"></i>
+													<span class="stepper-number">7</span>
+												</div>
+												<!--end::Icon-->
+												<!--begin::Label-->
+												<div class="stepper-label">
+													<h3 class="stepper-title">Completed</h3>
+													<div class="stepper-desc fw-bold">Woah, we are here</div>
+												</div>
+												<!--end::Label-->
+											</div>
+											<!--end::Step 7-->
+
+										</div>
+										<!--end::Nav-->
+									</div>
+									<!--end::Wrapper-->
+								</div>
+								<!--begin::Aside-->
+
+								<!--begin::Content-->
+								<div class="card d-flex flex-row-fluid flex-center">
+									<!--begin::Form-->
+									<form class="card-body py-20 w-100 w-xl-700px px-9" novalidate="novalidate" id="kt_create_account_form">
+
+										<!--begin::Step 1-->
+										<div class="current" data-kt-stepper-element="content">
+											<!--begin::Wrapper-->
+											<div class="w-100">
+												<!--begin::Heading-->
+												<div class="pb-10 pb-lg-15">
+													<!--begin::Title-->
+													<h2 class="fw-bolder d-flex align-items-center text-dark">Choose Institution Type
+													<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Billing is issued based on your selected institution type"></i></h2>
+													<!--end::Title-->
+													<!--begin::Notice-->
+													<div class="text-muted fw-bold fs-6">If you need more info, please check out
+													<a asp-action="FAQ" asp-controller="Home" class="link-primary fw-bolder">Help Page</a>.</div>
+													<!--end::Notice-->
+												</div>
+												<!--end::Heading-->
+												<!--begin::Input group-->
+												<div class="fv-row">
+													<!--begin::Row-->
+													<div class="row">
+														<!--begin::Col-->
+														<div class="col-lg-6">
+															<!--begin::Option-->
+															<input type="radio" class="btn-check" name="account_type" value="bank" checked="checked" id="kt_create_account_form_account_type_personal" />
+															<label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center mb-10" for="kt_create_account_form_account_type_personal">
+																<!--begin::Svg Icon | path: icons/duotune/communication/com005.svg-->
+																<span class="svg-icon svg-icon-3x me-5">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																		<path d="M20 14H18V10H20C20.6 10 21 10.4 21 11V13C21 13.6 20.6 14 20 14ZM21 19V17C21 16.4 20.6 16 20 16H18V20H20C20.6 20 21 19.6 21 19ZM21 7V5C21 4.4 20.6 4 20 4H18V8H20C20.6 8 21 7.6 21 7Z" fill="black" />
+																		<path opacity="0.3" d="M17 22H3C2.4 22 2 21.6 2 21V3C2 2.4 2.4 2 3 2H17C17.6 2 18 2.4 18 3V21C18 21.6 17.6 22 17 22ZM10 7C8.9 7 8 7.9 8 9C8 10.1 8.9 11 10 11C11.1 11 12 10.1 12 9C12 7.9 11.1 7 10 7ZM13.3 16C14 16 14.5 15.3 14.3 14.7C13.7 13.2 12 12 10.1 12C8.10001 12 6.49999 13.1 5.89999 14.7C5.59999 15.3 6.19999 16 7.39999 16H13.3Z" fill="black" />
+																	</svg>
+																</span>
+																<!--end::Svg Icon-->
+																<!--begin::Info-->
+																<span class="d-block fw-bold text-start">
+																	<span class="text-dark fw-bolder d-block fs-4 mb-2">Bank</span>
+																	<span class="text-muted fw-bold fs-6">Banking institution</span>
+																</span>
+																<!--end::Info-->
+															</label>
+															<!--end::Option-->
+														</div>
+														<!--end::Col-->
+														<!--begin::Col-->
+														<div class="col-lg-6">
+															<!--begin::Option-->
+															<input type="radio" class="btn-check" name="account_type" value="ofi" id="kt_create_account_form_account_type_corporate" />
+															<label class="btn btn-outline btn-outline-dashed btn-outline-default p-7 d-flex align-items-center" for="kt_create_account_form_account_type_corporate">
+																<!--begin::Svg Icon | path: icons/duotune/finance/fin006.svg-->
+																<span class="svg-icon svg-icon-3x me-5">
+																	<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																		<path opacity="0.3" d="M20 15H4C2.9 15 2 14.1 2 13V7C2 6.4 2.4 6 3 6H21C21.6 6 22 6.4 22 7V13C22 14.1 21.1 15 20 15ZM13 12H11C10.5 12 10 12.4 10 13V16C10 16.5 10.4 17 11 17H13C13.6 17 14 16.6 14 16V13C14 12.4 13.6 12 13 12Z" fill="black" />
+																		<path d="M14 6V5H10V6H8V5C8 3.9 8.9 3 10 3H14C15.1 3 16 3.9 16 5V6H14ZM20 15H14V16C14 16.6 13.5 17 13 17H11C10.5 17 10 16.6 10 16V15H4C3.6 15 3.3 14.9 3 14.7V18C3 19.1 3.9 20 5 20H19C20.1 20 21 19.1 21 18V14.7C20.7 14.9 20.4 15 20 15Z" fill="black" />
+																	</svg>
+																</span>
+																<!--end::Svg Icon-->
+																<!--begin::Info-->
+																<span class="d-block fw-bold text-start">
+												<span class="text-dark fw-bolder d-block fs-4 mb-2">OFI</span>
+																	<span class="text-muted fw-bold fs-6">Other financial institutions</span>
+																</span>
+																<!--end::Info-->
+															</label>
+															<!--end::Option-->
+														</div>
+														<!--end::Col-->
+													</div>
+													<!--end::Row-->
+												</div>
+												<!--end::Input group-->
+											</div>
+											<!--end::Wrapper-->
+										</div>
+										<!--end::Step 1-->
+
+										<!--begin::Step 2-->
+										<div data-kt-stepper-element="content">
+											<!--begin::Wrapper-->
+											<div class="w-100">
+												<!--begin::Heading-->
+												<div class="pb-10 pb-lg-15">
+													<!--begin::Title-->
+													<h2 class="fw-bolder text-dark">Official Information</h2>
+													<!--end::Title-->
+													<!--begin::Notice-->
+													<div class="text-muted fw-bold fs-6">If you need more info, please check out
+													<a href="#" class="link-primary fw-bolder">Help Page</a>.</div>
+													<!--end::Notice-->
+												</div>
+												<!--end::Heading-->
+												<!--begin::Input group-->
+												<div class="mb-10 fv-row">
+													<!--begin::Label-->
+													<label class="d-flex align-items-center form-label mb-3">Specify Staff Size
+													<i class="fas fa-exclamation-circle ms-2 fs-7" data-bs-toggle="tooltip" title="Provide your staff size "></i></label>
+													<!--end::Label-->
+													<!--begin::Row-->
+													<div class="row mb-2" data-kt-buttons="true">
+														<!--begin::Col-->
+														<div class="col">
+															<!--begin::Option-->
+															<label class="btn btn-outline btn-outline-dashed btn-outline-default w-100 p-4">
+																<input type="radio" class="btn-check" name="account_team_size" value="1-1" />
+																<span class="fw-bolder fs-3">1-1</span>
+															</label>
+															<!--end::Option-->
+														</div>
+														<!--end::Col-->
+														<!--begin::Col-->
+														<div class="col">
+															<!--begin::Option-->
+															<label class="btn btn-outline btn-outline-dashed btn-outline-default w-100 p-4 active">
+																<input type="radio" class="btn-check" name="account_team_size" checked="checked" value="2-10" />
+																<span class="fw-bolder fs-3">2-10</span>
+															</label>
+															<!--end::Option-->
+														</div>
+														<!--end::Col-->
+														<!--begin::Col-->
+														<div class="col">
+															<!--begin::Option-->
+															<label class="btn btn-outline btn-outline-dashed btn-outline-default w-100 p-4">
+																<input type="radio" class="btn-check" name="account_team_size" value="10-50" />
+																<span class="fw-bolder fs-3">10-50</span>
+															</label>
+															<!--end::Option-->
+														</div>
+														<!--end::Col-->
+														<!--begin::Col-->
+														<div class="col">
+															<!--begin::Option-->
+															<label class="btn btn-outline btn-outline-dashed btn-outline-default w-100 p-4">
+																<input type="radio" class="btn-check" name="account_team_size" value="50+" />
+																<span class="fw-bolder fs-3">50+</span>
+															</label>
+															<!--end::Option-->
+														</div>
+														<!--end::Col-->
+													</div>
+													<!--end::Row-->
+								
+												</div>
+												<!--end::Input group-->
+												<!--begin::Input group-->
+												<div class="mb-10 fv-row">
+													<!--begin::Label-->
+													<label class="form-label mb-3">Company Name</label>
+													<!--end::Label-->
+													<!--begin::Input-->
+													<input type="text" class="form-control form-control-lg form-control-solid" name="company_name" placeholder="" value="" />
+													<!--end::Input-->
+												</div>
+												<!--end::Input group-->
+
+												<!--begin::Input group-->
+												<div class="row fv-row mb-10">
+													<!--begin::Col-->
+													<div class="col-xl-6">
+										<label class="form-label mb-3 fs-6">Business Category</label>
+										<select name="business_category" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
+											<option></option>
+											<option value="1">Category 1</option>
+										</select>
+													</div>
+													<!--end::Col-->
+													<!--begin::Col-->
+													<div class="col-xl-6">
+														<label class="form-label mb-3 fs-6">Business Sub Category</label>
+										<select name="business_sub_category" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
+											<option></option>
+											<option value="1">Business Sub Category 1</option>
+										</select>
+													</div>
+													<!--end::Col-->
+												</div>
+												<!--end::Input group-->
+
+												<!--begin::Input group-->
+												<div class="row fv-row mb-10">
+													<!--begin::Col-->
+													<div class="col-xl-6">
+										<label class="form-label mb-3 fs-6">RC Number</label>
+										<input class="form-control form-control-lg form-control-solid" type="text" name="rc_number" placeholder="" value="" />
+													</div>
+													<!--end::Col-->
+													<!--begin::Col-->
+													<div class="col-xl-6">
+														<label class="form-label mb-3 fs-6">Incorporation Date</label>
+										<input class="form-control form-control-lg form-control-solid" name="incorporation_date" placeholder="Select date" />
+													</div>
+													<!--end::Col-->
+												</div>
+												<!--end::Input group-->				
+
+												<!--begin::Input group-->
+												<div class="mb-10 fv-row">
+													<!--begin::Label-->
+													<label class="form-label mb-3">Register Address 1</label>
+													<!--end::Label-->
+													<!--begin::Input-->
+													<input type="text" class="form-control form-control-lg form-control-solid" name="register_address_1" placeholder="" value="" />
+													<!--end::Input-->
+												</div>
+												<!--end::Input group-->
+
+												<!--begin::Input group-->
+												<div class="mb-10 fv-row">
+													<!--begin::Label-->
+													<label class="form-label mb-3">Register Address 2</label>
+													<!--end::Label-->
+													<!--begin::Input-->
+													<input type="text" class="form-control form-control-lg form-control-solid" name="register_address_2" placeholder="" value="" />
+													<!--end::Input-->
+												</div>
+												<!--end::Input group-->
+
+												<!--begin::Input group-->
+												<div class="row fv-row mb-10">
+													<!--begin::Col-->
+													<div class="col-xl-6">
+										<label class="form-label mb-3 fs-6">Country</label>
+										<select name="country" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
+											<option></option>
+											<option value="1">Nigeria</option>
+										</select>
+													</div>
+													<!--end::Col-->
+													<!--begin::Col-->
+													<div class="col-xl-6">
+														<label class="form-label mb-3 fs-6">State</label>
+										<select name="state" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
+											<option></option>
+											<option value="1">Lagos</option>
+											<option >Abuja</option>
+										</select>
+													</div>
+													<!--end::Col-->
+												</div>
+												<!--end::Input group-->	
+											
+												<!--begin::Input group-->
+												<div class="row fv-row mb-10">
+													<!--begin::Col-->
+													<div class="col-xl-6">
+										<label class="form-label mb-3 fs-6">City</label>
+										<input class="form-control form-control-lg form-control-solid" type="text" name="city" placeholder="" value="" />
+													</div>
+													<!--end::Col-->
+													<!--begin::Col-->
+													<div class="col-xl-6">
+														<label class="form-label mb-3 fs-6">Business Nature</label>
+										<input class="form-control form-control-lg form-control-solid" type="text" name="business_nature" placeholder="" value="" />
+													</div>
+													<!--end::Col-->
+												</div>
+												<!--end::Input group-->	
+												
+												<!--begin::Input group-->
+												<div class="row fv-row mb-10">
+													<!--begin::Col-->
+													<div class="col-xl-6">
+										<label class="form-label mb-3 fs-6">Email</label>
+										<input class="form-control form-control-lg form-control-solid" type="text" name="email" placeholder="" value="" />
+													</div>
+													<!--end::Col-->
+													<!--begin::Col-->
+													<div class="col-xl-6">
+														<label class="form-label mb-3 fs-6">Phone Number</label>
+										<input class="form-control form-control-lg form-control-solid" type="text" name="phone_number" placeholder="" value="" />
+													</div>
+													<!--end::Col-->
+												</div>
+												<!--end::Input group-->		
+
+											</div>
+											<!--end::Wrapper-->
+										</div>
+										<!--end::Step 2-->
+
+										<!--begin::Step 3-->
+										<div data-kt-stepper-element="content">
+											<!--begin::Wrapper-->
+											<div class="w-100">
+												<!--begin::Heading-->
+												<div class="pb-10 pb-lg-12">
+													<!--begin::Title-->
+													<h2 class="fw-bolder text-dark">General Information</h2>
+													<!--end::Title-->
+													<!--begin::Notice-->
+													<div class="text-muted fw-bold fs-6">If you need more info, please check out
+													<a href="#" class="link-primary fw-bolder">Help Page</a>.</div>
+													<!--end::Notice-->
+												</div>
+												<!--end::Heading-->
+
+							<!--begin::Input group-->
+							<div class="row fv-row mb-10">
+								<!--begin::Col-->
+								<div class="col-xl-6">
+									<label class="form-label mb-3 fs-6">Sector</label>
+									<select name="sector" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
+										<option></option>
+										<option value="1">Sector 1</option>
+									</select>
+								</div>
+								<!--end::Col-->
+								<!--begin::Col-->
+								<div class="col-xl-6">
+									<label class="form-label mb-3 fs-6">Industry</label>
+									<select name="business_sub_category" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
+										<option></option>
+										<option value="1">Industry 1</option>
+									</select>
+								</div>
+								<!--end::Col-->
+							</div>
+							<!--end::Input group-->
+
+							<!--begin::Input group-->
+							<div class="row fv-row mb-10">
+								<!--begin::Col-->
+								<div class="col-xl-6">
+									<label class="form-label mb-3 fs-6">Credit Rating</label>
+									<input type="text" class="form-control form-control-lg form-control-solid" name="credit_rating" placeholder="" value="" />
+								</div>
+								<!--end::Col-->
+								<!--begin::Col-->
+								<div class="col-xl-6">
+									<label class="form-label mb-3 fs-6">Sensitivity Level</label>
+									<select name="sensitivity_level" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
+										<option></option>
+										<option value="1">Low</option>
+									</select>
+								</div>
+								<!--end::Col-->
+							</div>
+							<!--end::Input group-->
+
+							<!--begin::Input group-->
+							<div class="row fv-row mb-10">
+								<!--begin::Col-->
+								<div class="col-xl-6">
+									<label class="form-label mb-3 fs-6">Segment</label>
+									<select name="segment" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
+										<option></option>
+										<option value="1">Segment 1</option>
+									</select>
+								</div>
+								<!--end::Col-->
+								<!--begin::Col-->
+								<div class="col-xl-6">
+									<label class="form-label mb-3 fs-6">Sub Segment</label>
+									<select name="sub_segment" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
+										<option></option>
+										<option value="1">Sub Segment 1</option>
+									</select>
+								</div>
+								<!--end::Col-->
+							</div>
+							<!--end::Input group-->
+
+							<!--begin::Input group-->
+							<div class="mb-10 fv-row">
+								<!--begin::Label-->
+								<label class="form-label mb-3">Sub Type</label>
+								<!--end::Label-->
+								<!--begin::Input-->
+								<select name="sub_type" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select an option" data-allow-clear="true" multiple="multiple" data-hide-search="true">
+									<option></option>
+									<option value="1">Sub Type 1</option>
+									<option value="1">Sub Type 2</option>
+								</select>
+								<!--end::Input-->
+							</div>
+							<!--end::Input group-->
+							<!--begin::Input group-->
+							<div class="mb-10 fv-row">
+								<!--begin::Label-->
+								<label class="form-label mb-3">Source System</label>
+								<!--end::Label-->
+								<!--begin::Input-->
+								<select name="source_system" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select an option" data-allow-clear="true" multiple="multiple" data-hide-search="true">
+									<option></option>
+									<option value="1">Source System 1</option>
+									<option value="1">Source System 2</option>
+								</select>
+								<!--end::Input-->
+							</div>
+							<!--end::Input group-->
+
+							<!--begin::Input group-->
+							<div class="mb-10 fv-row">
+								<!--begin::Label-->
+								<label class="form-label mb-3">Business Development Directorate</label>
+								<!--end::Label-->
+								<!--begin::Input-->
+								<select name="business_development_directorate" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select an option" data-allow-clear="true" data-hide-search="true">
+									<option></option>
+									<option value="1">Business Development Directorate 1</option>
+									<option value="1">Business Development Directorate 2</option>
+								</select>
+								<!--end::Input-->
+							</div>
+							<!--end::Input group-->
+
+							
+											</div>
+											<!--end::Wrapper-->
+										</div>
+										<!--end::Step 3-->
+
+										<!--begin::Step 4-->
+										<div data-kt-stepper-element="content">
+											<!--begin::Wrapper-->
+											<div class="w-100">
+												<!--begin::Heading-->
+												<div class="pb-10 pb-lg-15">
+													<!--begin::Title-->
+													<h2 class="fw-bolder text-dark">Key Contact Person(s)</h2>
+													<!--end::Title-->
+													<!--begin::Notice-->
+													<div class="text-muted fw-bold fs-6">If you need more info, please check out
+													<a href="#" class="text-primary fw-bolder">Help Page</a>.</div>
+													<!--end::Notice-->
+												</div>
+												<!--end::Heading-->
+							<!--begin::Repeater-->
+							<div id="contact_repeater">
+								<!--begin::Form group-->
+								<div class="form-group">
+									<div data-repeater-list="contact_repeater">
+										<div data-repeater-item="">
+
+											<div class="form-group row mb-5">
+												<div class="col-md-8">
+													<label class="form-label">Name:</label>
+													<input type="email" class="form-control mb-2 mb-md-0" placeholder="Enter full name" />
+												</div>
+												
+												<div class="col-md-4">
+													<a href="javascript:;" data-repeater-delete="" class="btn btn-sm btn-light-danger mt-3 mt-md-9">
+														<i class="la la-trash-o fs-3"></i>Delete
+													</a>
+												</div>
+											</div>
+
+											<div class="form-group row mb-5">
+												
+												<div class="col-md-4">
+													<label class="form-label">Email:</label>
+													<input type="email" class="form-control mb-2 mb-md-0" placeholder="Enter email" />
+												</div>
+												<div class="col-md-4">
+													<label class="form-label">Phone Number:</label>
+													<input type="text" class="form-control mb-2 mb-md-0" placeholder="Enter phone number" />
+												</div>
+												<div class="col-md-4">
+													<div class="form-check form-check-custom form-check-solid mt-2 mt-md-11">
+														<input class="form-check-input" type="checkbox" value="" id="form_checkbox" />
+														<label class="form-check-label" for="form_checkbox">Mark as default</label>
+													</div>
+												</div>
+							
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--end::Form group-->
+								<!--begin::Form group-->
+								<div class="form-group">
+									<a href="javascript:;" data-repeater-create="" class="btn btn-light-primary">
+										<i class="la la-plus"></i>Add
+									</a>
+								</div>
+								<!--end::Form group-->
+							</div>
+							<!--end::Repeater-->
+
+											</div>
+											<!--end::Wrapper-->
+										</div>
+										<!--end::Step 4-->
+
+					<!--begin::Step 5-->
+					<div data-kt-stepper-element="content">
+						<!--begin::Wrapper-->
+						<div class="w-100">
+							<!--begin::Heading-->
+							<div class="pb-10 pb-lg-15">
+								<!--begin::Title-->
+								<h2 class="fw-bolder text-dark">Upload Document(s)</h2>
+								<!--end::Title-->
+								<!--begin::Notice-->
+								<div class="text-muted fw-bold fs-6">
+									If you need more info, please check out
+									<a href="#" class="text-primary fw-bolder">Help Page</a>.
+								</div>
+								<!--end::Notice-->
+							</div>
+							<!--end::Heading-->
+							<!--begin::Repeater-->
+							<div id="document_repeater">
+								<!--begin::Form group-->
+								<div class="form-group">
+									<div data-repeater-list="document_repeater">
+										<div data-repeater-item="">
+
+											<div class="form-group row mb-5">
+												<div class="col-md-8">
+													<label class="form-label">Title:</label>
+													<input type="text" class="form-control mb-2 mb-md-0" placeholder="" />
+												</div>
+
+												<div class="col-md-4">
+													<div class="form-check form-check-custom form-check-solid mt-2 mt-md-11">
+														<input class="form-check-input" type="checkbox" value="" id="form_checkbox" />
+														<label class="form-check-label" for="form_checkbox">Has expiry date?</label>
+													</div>
+												</div>
+
+												
+											</div>
+
+											<div class="form-group row mb-5">
+												<div class="col-md-4">
+													<label class="form-label">Type:</label>
+													<input type="text" class="form-control mb-2 mb-md-0" placeholder="" />
+												</div>
+
+												<div class="col-md-4">
+													<label class="form-label">Issue Date:</label>
+													<input class="form-control mb-2 mb-md-0" placeholder="" name="issue_date"/>
+												</div>
+
+												<div class="col-md-4">
+													<label class="form-label">Expiry Date:</label>
+													<input class="form-control mb-2 mb-md-0" placeholder="" name="expiry_date" />
+												</div>
+												
+											</div>
+
+											<div class="form-group row mb-5">
+
+												<div class="col-md-6">
+													<label class="form-label">File:</label>
+													<input type="file" class="form-control mb-2 mb-md-0" placeholder="" />
+												</div>
+
+												<div class="col-md-4">
+													<a href="javascript:;" data-repeater-delete="" class="btn btn-sm btn-light-danger mt-3 mt-md-9">
+														<i class="la la-trash-o fs-3"></i>Delete
+													</a>
+												</div>
+											</div>
+
+											<div class="form-group row mb-5">
+												<div class="col-md-12">
+													<!--begin::Hint-->
+													<span class="form-text text-muted">Max file size is 1MB and max number of files is 1.</span>
+													<!--end::Hint-->
+
+												</div>
+
+											</div>
+										</div>
+									</div>
+								</div>
+								<!--end::Form group-->
+								<!--begin::Form group-->
+								<div class="form-group">
+									<a href="javascript:;" data-repeater-create="" class="btn btn-light-primary">
+										<i class="la la-plus"></i>Add
+									</a>
+								</div>
+								<!--end::Form group-->
+							</div>
+							<!--end::Repeater-->
+
+						</div>
+						<!--end::Wrapper-->
+					</div>
+					<!--end::Step 5-->
+
+					<!--begin::Step 6-->
+					<div data-kt-stepper-element="content">
+						<!--begin::Wrapper-->
+						<div class="w-100">
+							<!--begin::Heading-->
+							<div class="pb-10 pb-lg-15">
+								<!--begin::Title-->
+								<h2 class="fw-bolder text-dark">Bank Information</h2>
+								<!--end::Title-->
+								<!--begin::Notice-->
+								<div class="text-muted fw-bold fs-6">
+									If you need more info, please check out
+									<a href="#" class="text-primary fw-bolder">Help Page</a>.
+								</div>
+								<!--end::Notice-->
+							</div>
+							<!--end::Heading-->
+
+							
+							<!--begin::Input group-->
+							<div class="row fv-row mb-10">
+								
+								<!--begin::Col-->
+								<div class="col-xl-12">
+									<label class="form-label mb-3 fs-6">Settlement Bank</label>
+									<select name="settlement_bank" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
+										<option></option>
+										<option value="1">Access Bank</option>
+									</select>
+								</div>
+								<!--end::Col-->
+								<!--begin::Col-->
+								<div class="col-xl-6">
+									
+								</div>
+								<!--end::Col-->
+							</div>
+							<!--end::Input group-->
+
+
+							<!--begin::Repeater-->
+							<div id="bank_repeater">
+								<!--begin::Form group-->
+								<div class="form-group">
+									<div data-repeater-list="bank_repeater">
+										<div data-repeater-item="">
+
+											<div class="form-group row mb-5">
+												<div class="col-md-4">
+													<label class="form-label">Account Type:</label>
+													<select name="account_type" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
+											<option></option>
+											<option value="1">Fee Collection</option>
+											<option value="2">Commission Payment</option>
+										</select>
+												</div>
+
+												<div class="col-md-5">
+													<label class="form-label">Bank:</label>
+													<select name="bank" class="form-select form-select-lg form-select-solid" data-control="select2" data-placeholder="Select..." data-allow-clear="true" data-hide-search="true">
+											<option></option>
+											<option value="1">Access Bank</option>
+											<option value="2">First Bank</option>
+										</select>
+												</div>
+
+												<div class="col-md-3">
+													<a href="javascript:;" data-repeater-delete="" class="btn btn-sm btn-light-danger mt-3 mt-md-9">
+														<i class="la la-trash-o fs-3"></i>Delete
+													</a>
+												</div>
+
+											</div>
+
+											<div class="form-group row mb-5">
+
+												<div class="col-md-6">
+													<label class="form-label">Account Name:</label>
+													<input type="text" class="form-control mb-2 mb-md-0" placeholder="" />
+												</div>
+
+												<div class="col-md-6">
+													<label class="form-label">Account Number:</label>
+													<input type="text" class="form-control mb-2 mb-md-0" placeholder="" />
+												</div>
+
+	
+											</div>
+
+										</div>
+									</div>
+								</div>
+								<!--end::Form group-->
+								<!--begin::Form group-->
+								<div class="form-group">
+									<a href="javascript:;" data-repeater-create="" class="btn btn-light-primary">
+										<i class="la la-plus"></i>Add
+									</a>
+								</div>
+								<!--end::Form group-->
+							</div>
+							<!--end::Repeater-->
+
+						</div>
+						<!--end::Wrapper-->
+					</div>
+					<!--end::Step 6-->
+
+										<!--begin::Step 7-->
+										<div data-kt-stepper-element="content">
+											<!--begin::Wrapper-->
+											<div class="w-100">
+												<!--begin::Heading-->
+												<div class="pb-8 pb-lg-10">
+													<!--begin::Title-->
+													<h2 class="fw-bolder text-dark">You Are Done!</h2>
+													<!--end::Title-->
+													<!--begin::Notice-->
+												@*	<div class="text-muted fw-bold fs-6">If you need more info, please
+													<a href="../../demo11/dist/authentication/sign-in/basic.html" class="link-primary fw-bolder">Sign In</a>.</div>*@
+													<!--end::Notice-->
+												</div>
+												<!--end::Heading-->
+												<!--begin::Body-->
+												<div class="mb-0">
+													<!--begin::Text-->
+								<div class="fs-6 text-gray-600 mb-5">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit.</div>
+													<!--end::Text-->
+													<!--begin::Alert-->
+													<!--begin::Notice-->
+													<div class="notice d-flex bg-light-warning rounded border-warning border border-dashed p-6">
+														<!--begin::Icon-->
+														<!--begin::Svg Icon | path: icons/duotune/general/gen044.svg-->
+														<span class="svg-icon svg-icon-2tx svg-icon-warning me-4">
+															<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+																<rect opacity="0.3" x="2" y="2" width="20" height="20" rx="10" fill="black" />
+																<rect x="11" y="14" width="7" height="2" rx="1" transform="rotate(-90 11 14)" fill="black" />
+																<rect x="11" y="17" width="2" height="2" rx="1" transform="rotate(-90 11 17)" fill="black" />
+															</svg>
+														</span>
+														<!--end::Svg Icon-->
+														<!--end::Icon-->
+														<!--begin::Wrapper-->
+														<div class="d-flex flex-stack flex-grow-1">
+															<!--begin::Content-->
+															<div class="fw-bold">
+																<h4 class="text-gray-900 fw-bolder">Registration completed!</h4>
+																<div class="fs-6 text-gray-700">We currently processing your data. If you need more info, please check out
+												<a href="#" class="text-primary fw-bolder">Help Page</a>.
+											</div>
+															</div>
+															<!--end::Content-->
+														</div>
+														<!--end::Wrapper-->
+													</div>
+													<!--end::Notice-->
+													<!--end::Alert-->
+												</div>
+												<!--end::Body-->
+											</div>
+											<!--end::Wrapper-->
+										</div>
+										<!--end::Step 7-->
+
+										<!--begin::Actions-->
+										<div class="d-flex flex-stack pt-10">
+											<!--begin::Wrapper-->
+											<div class="mr-2">
+												<button type="button" class="btn btn-lg btn-light-primary me-3" data-kt-stepper-action="previous">
+												<!--begin::Svg Icon | path: icons/duotune/arrows/arr063.svg-->
+												<span class="svg-icon svg-icon-4 me-1">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+														<rect opacity="0.5" x="6" y="11" width="13" height="2" rx="1" fill="black" />
+														<path d="M8.56569 11.4343L12.75 7.25C13.1642 6.83579 13.1642 6.16421 12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75L5.70711 11.2929C5.31658 11.6834 5.31658 12.3166 5.70711 12.7071L11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25C13.1642 17.8358 13.1642 17.1642 12.75 16.75L8.56569 12.5657C8.25327 12.2533 8.25327 11.7467 8.56569 11.4343Z" fill="black" />
+													</svg>
+												</span>
+												<!--end::Svg Icon-->Back</button>
+											</div>
+											<!--end::Wrapper-->
+											<!--begin::Wrapper-->
+											<div>
+												<button type="button" class="btn btn-lg btn-primary me-3" data-kt-stepper-action="submit">
+													<span class="indicator-label">Submit
+													<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
+													<span class="svg-icon svg-icon-3 ms-2 me-0">
+														<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+															<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black" />
+															<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black" />
+														</svg>
+													</span>
+													<!--end::Svg Icon--></span>
+													<span class="indicator-progress">Please wait...
+													<span class="spinner-border spinner-border-sm align-middle ms-2"></span></span>
+												</button>
+												<button type="button" class="btn btn-lg btn-primary" data-kt-stepper-action="next">Continue
+												<!--begin::Svg Icon | path: icons/duotune/arrows/arr064.svg-->
+												<span class="svg-icon svg-icon-4 ms-1 me-0">
+													<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+														<rect opacity="0.5" x="18" y="13" width="13" height="2" rx="1" transform="rotate(-180 18 13)" fill="black" />
+														<path d="M15.4343 12.5657L11.25 16.75C10.8358 17.1642 10.8358 17.8358 11.25 18.25C11.6642 18.6642 12.3358 18.6642 12.75 18.25L18.2929 12.7071C18.6834 12.3166 18.6834 11.6834 18.2929 11.2929L12.75 5.75C12.3358 5.33579 11.6642 5.33579 11.25 5.75C10.8358 6.16421 10.8358 6.83579 11.25 7.25L15.4343 11.4343C15.7467 11.7467 15.7467 12.2533 15.4343 12.5657Z" fill="black" />
+													</svg>
+												</span>
+												<!--end::Svg Icon--></button>
+											</div>
+											<!--end::Wrapper-->
+										</div>
+										<!--end::Actions-->
+									</form>
+									<!--end::Form-->
+								</div>
+								<!--end::Content-->
+							</div>
+							<!--end::Stepper-->
+						</div>
+						<!--end::Post-->
+					</div>
+					<!--end::Container-->
+@section Scripts
+	{
+		<script src="~/assets/plugins/custom/formrepeater/formrepeater.bundle.js"></script>
+		<script src="~/custom/js/customer-registration.js"></script>
+
+}

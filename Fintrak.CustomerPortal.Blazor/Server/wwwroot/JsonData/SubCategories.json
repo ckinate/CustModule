@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Sub Category 1",
+    "categoryId": 1
+  },
+  {
+    "id": 2,
+    "name": "Sub Category 2",
+    "categoryId": 1
+  },
+  {
+    "id": 3,
+    "name": "Sub Category 3",
+    "categoryId": 2
+  },
+  {
+    "id": 4,
+    "name": "Sub Category 4",
+    "categoryId": 3
+  },
+  {
+    "id": 5,
+    "name": "Sub Category 5",
+    "categoryId": 3
+  },
+  {
+    "id": 6,
+    "name": "Sub Category 6",
+    "categoryId": 3
+  }
+]

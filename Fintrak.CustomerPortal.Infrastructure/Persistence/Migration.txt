@@ -1,0 +1,48 @@
+﻿dotnet ef migrations add init -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add onboardingmodels -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add addquerymodels -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add addtinmodels -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add add validatedtocustomermodels -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add addcustomerquerymodel -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add updateinvitationmodel -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add AddIncludeLocalAccount -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add UpdateCustomerModel -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add MakeFaxOptional -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add IncludeDesignation -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add AddLockToCustomer -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add AddDueDiligence -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add AddReplaceAdmin -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add AddRequireDataModification -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add AddAdditionalFieldsToCustomer -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add UpdateEntityConfig -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add AddCustomerProduct -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add AddStageToCustomer -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add UpdateCustomerProduct -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add UpdateCustomerProductRemark -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add AddParentCodeToCustomer -o Migrations -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+dotnet ef database update -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+dotnet ef migrations remove -c ApplicationDbContext -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server

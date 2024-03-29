@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Bank 1",
+    "code": "B1"
+  },
+  {
+    "id": 2,
+    "name": "Bank 2",
+    "code": "B2"
+  },
+  {
+    "id": 3,
+    "name": "Bank 3",
+    "code": "B3"
+  }
+]

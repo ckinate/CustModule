@@ -1,0 +1,17 @@
+dotnet ef migrations add init -o Migrations -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add AddAcceptTermsToUser -o Migrations -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add AddAHasIssueDate -o Migrations -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add AddCustomFieldToCustomer -o Migrations -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add AddHasChildInstitutionType -o Migrations -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add AddSettlementBankId -o Migrations -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add AddSettlementBank -o Migrations -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef migrations add AddSubsidiary -o Migrations -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server
+
+dotnet ef database update -p C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Infrastructure -s C:\Development\Fintrak\CustomerPortal\Fintrak.CustomerPortal.Blazor\Server

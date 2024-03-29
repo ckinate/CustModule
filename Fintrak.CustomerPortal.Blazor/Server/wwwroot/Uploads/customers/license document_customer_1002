@@ -1,0 +1,12 @@
+{
+  "result": {
+    "fileName": "MasterSummaryReportsList.xlsx",
+    "fileType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "fileToken": "862109433c714a18ad59beaf399e1efc"
+  },
+  "targetUrl": null,
+  "success": true,
+  "error": null,
+  "unAuthorizedRequest": false,
+  "__abp": true
+}

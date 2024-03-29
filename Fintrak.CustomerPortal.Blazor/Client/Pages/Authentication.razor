@@ -1,0 +1,36 @@
+﻿@page "/authentication/{action}"
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using Fintrak.CustomerPortal.Blazor.Client.Extensions
+
+@*<RemoteAuthenticatorView Action="@Action" OnLogOutSucceeded="HandleLogOutSucceeded" />
+*@
+<RemoteAuthenticatorView Action="@Action">
+    <LogOutSucceeded>
+        <LogoutDisplay SessionTimeout="@SessionTimeout"></LogoutDisplay>
+    </LogOutSucceeded>
+</RemoteAuthenticatorView>
+
+@code{
+    [Parameter] public string? Action { get; set; }
+
+    [Inject]
+    NavigationManager NavigationManager { get; set; }
+
+    public bool SessionTimeout { get; set; }
+
+    protected override void OnInitialized()
+    {
+        bool sessionTimeout = false;
+        NavigationManager.TryGetQueryString<bool>("sessionTimeout", out sessionTimeout);
+        SessionTimeout = sessionTimeout;
+        // if (sessionTimeout)
+        // {
+        //     Message = "Sorry, your session has expired.";
+        // }
+    }
+
+    public void HandleLogOutSucceeded()
+    {
+        //Navigation.NavigateToLogin("authentication/login");
+    }
+}

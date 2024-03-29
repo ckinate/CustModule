@@ -1,0 +1,414 @@
+﻿@page "/onboarding/onboardproduct"
+@page "/onboarding/onboardproduct/{Id:int}"
+
+@using Fintrak.CustomerPortal.Blazor.Shared.Extensions;
+@using Blazor.Shared.Models.Enums;
+@using Fintrak.CustomerPortal.Blazor.Client.Onboarding.Models.Validators
+@using Blazored.FluentValidation
+
+@inherits PageBase
+
+<PageTitle>Product Registration</PageTitle>
+
+<!--begin::Content-->
+<div class="content d-flex flex-column flex-column-fluid" id="kt_content">
+	<!--begin::Subheader-->
+	<div class="subheader py-2 py-lg-6 subheader-transparent" id="kt_subheader">
+		<div class="container d-flex align-items-center justify-content-between flex-wrap flex-sm-nowrap">
+			<!--begin::Info-->
+			<div class="d-flex align-items-center flex-wrap mr-1">
+				<!--begin::Page Heading-->
+				<div class="d-flex align-items-baseline flex-wrap mr-5">
+					<!--begin::Page Title-->
+					<h5 class="text-dark font-weight-bold my-1 mr-5">Onboard Product</h5>
+					<!--end::Page Title-->
+					<!--begin::Breadcrumb-->
+					<ul class="breadcrumb breadcrumb-transparent breadcrumb-dot font-weight-bold p-0 my-2 font-size-sm">
+						<li class="breadcrumb-item text-muted">
+							<a href="onboarding/dashboard" class="text-muted">Dashboard</a>
+						</li>
+	
+						<li class="breadcrumb-item text-muted">
+							<a href="" class="text-muted">Onboard Product</a>
+						</li>
+					</ul>
+					<!--end::Breadcrumb-->
+				</div>
+				<!--end::Page Heading-->
+			</div>
+			<!--end::Info-->
+			<!--begin::Toolbar-->
+			<div class="d-flex align-items-center">
+				
+			</div>
+			<!--end::Toolbar-->
+		</div>
+	</div>
+	<!--end::Subheader-->
+	<!--begin::Entry-->
+	<div class="d-flex flex-column-fluid">
+		<!--begin::Container-->
+		<div class="container">
+
+			<EditForm Model="PageModel" OnSubmit="SubmitData">
+
+				<div class="row">
+					<div class="col-lg-12">
+						<!--begin::Card-->
+						<div class="card card-custom gutter-b example example-compact">
+							<div class="card-header">
+								<h3 class="card-title">Product Onboarding</h3>
+								<div class="card-toolbar">
+									<div class="example-tools justify-content-center">
+									</div>
+								</div>
+							</div>
+							<!--begin::Form-->
+							
+								<div class="card-body">
+
+									<div class="row">
+									<div class="col-xl-6">
+										<div class="form-group">
+											<label>Product:</label>
+											<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.ProductId)" Value="PageModel.ProductId" ValueChanged="@((int value) => OnProductValueChanged(value))">
+												<option value="0" selected="selected">Select Product</option>
+												@if (ProductLookup != null)
+												{
+													foreach (var item in ProductLookup)
+													{
+														<option value="@item.Value">@item.Text</option>
+													}
+												}
+											</InputSelect>
+											<ValidationMessage For="@(() => PageModel.ProductId)" class="form-text text-danger" />
+										</div>
+									</div>
+
+									<div class="col-xl-6">
+										<!--begin::Input-->
+										<div class="form-group">
+											<label>Operation Mode<span class="text-danger">*</span></label>
+											<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.OperationMode)" Value="PageModel.OperationMode" ValueChanged="@((OperationMode value) => OnOperationModeValueChanged(value))">
+												<option value="0" selected="selected">Select operation mode</option>
+												<option value="@OperationMode.API">API</option>
+												<option value="@OperationMode.Portal">Portal</option>
+												<option value="@OperationMode.Both">Both</option>
+											</InputSelect>
+											<ValidationMessage For="@(() => PageModel.OperationMode)" class="form-text text-danger" />
+										</div>
+										<!--end::Input-->
+									</div>
+									</div>
+
+								<div class="row">
+									<div class="col-xl-6">
+										<div class="form-group">
+											<label>Contact:</label>
+											<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.ContactPersonId)" Value="PageModel.ContactPersonId" ValueChanged="@((int value) => OnContactPersonValueChanged(value))">
+												<option value="0" selected="selected">Select Contact</option>
+												@if (ContactPersonLookup != null)
+												{
+													foreach (var item in ContactPersonLookup)
+													{
+														<option value="@item.Value">@item.Text</option>
+													}
+												}
+											</InputSelect>
+											<ValidationMessage For="@(() => PageModel.ContactPersonId)" class="form-text text-danger" />
+										</div>
+									</div>
+									<div class="col-xl-6">
+										<div class="form-group">
+											<label>Account:</label>
+											<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.AccountId)" Value="PageModel.AccountId" ValueChanged="@((int value) => OnAccountValueChanged(value))">
+												<option value="0" selected="selected">Select Account</option>
+												@if (AccountLookup != null)
+												{
+													foreach (var item in AccountLookup)
+													{
+														<option value="@item.Value">@item.Text</option>
+													}
+												}
+											</InputSelect>
+											<ValidationMessage For="@(() => PageModel.AccountId)" class="form-text text-danger" />
+										</div>
+									</div>
+								</div>
+
+								<div class="row">
+									<div class="col-xl-4">
+										<div class="form-group">
+											<label>Website:</label>
+											<InputText class="form-control form-control-solid" @bind-Value="PageModel.Website"></InputText>
+											<ValidationMessage For="@(() => PageModel.Website)" class="form-text text-danger" />
+										</div>
+									</div>
+									<div class="col-xl-8">
+										<div class="form-group">
+											<label>Reason:</label>
+											<InputText class="form-control form-control-solid" @bind-Value="PageModel.Reason"></InputText>
+											<ValidationMessage For="@(() => PageModel.Reason)" class="form-text text-danger" />
+										</div>
+									</div>
+									
+								</div>
+								
+
+								<div class="row">
+									<div class="col-lg-12">
+										<!--begin::Card-->
+										<div class="card card-custom">
+											<div class="card-header card-header-tabs-line">
+												<div class="card-toolbar">
+													<ul class="nav nav-tabs nav-bold nav-tabs-line">
+														<li class="nav-item">
+															<a class="nav-link active" data-toggle="tab" href="#kt_tab_pane_1_4">
+																<span class="nav-icon">
+																	<i class="flaticon2-chat-1"></i>
+																</span>
+																<span class="nav-text">Documents</span>
+															</a>
+														</li>
+														<li class="nav-item">
+															<a class="nav-link" data-toggle="tab" href="#kt_tab_pane_2_4">
+																<span class="nav-icon">
+																	<i class="flaticon2-drop"></i>
+																</span>
+																<span class="nav-text">Additional Information</span>
+															</a>
+														</li>
+
+													</ul>
+												</div>
+												<div class="card-toolbar">
+												</div>
+											</div>
+											<div class="card-body">
+												<div class="tab-content">
+													<div class="tab-pane fade show active" id="kt_tab_pane_1_4" role="tabpanel" aria-labelledby="kt_tab_pane_1_4">
+
+														@if (PageModel.Documents != null && PageModel.Documents.Count > 0)
+														{
+															foreach (var (document, index) in PageModel.Documents.Select((v, i) => (v, i)))
+															{
+
+																<input type="hidden" @bind-value="@document.DocumentId" />
+																<div>
+																	<div class="row">
+																		<div class="col-xl-9">
+																			<!--begin::Input-->
+																			<div class="form-group">
+																				<label>Type<span class="text-danger">*</span></label>
+
+																				<InputSelect class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.Documents[index].DocumentTypeId)" Value="PageModel.Documents[index].DocumentTypeId" ValueChanged="@((int? value) => OnDocumentTypeValueChanged(value, document.FormId))">
+																					<option value="0" selected="selected">Select Type</option>
+																					@if (DocumentTypeLookup != null)
+																					{
+																						foreach (var item in DocumentTypeLookup)
+																						{
+																							<option value="@item.Value">@item.Text</option>
+																						}
+																					}
+																				</InputSelect>
+																				<ValidationMessage For="@(() => PageModel.Documents[index].DocumentTypeId)" class="form-text text-danger" />
+
+																				@* <InputText class="form-control form-control-solid form-control-lg" @bind-Value="PageModel.Documents.Documents[index].Title"></InputText>
+																		<ValidationMessage For="@(() => PageModel.Documents.Documents[index].Title)" class="form-text text-danger" /> *@
+																			</div>
+																			<!--end::Input-->
+																		</div>
+																		<div class="col-xl-3">
+																			<a href="javascript:;" class="btn btn-sm btn-light-danger mt-3 mt-md-9" @onclick="@(() => RemoveDocument(document.FormId))">
+																				<i class="la la-trash-o fs-3"></i>Remove
+																			</a>
+																		</div>
+																	</div>
+
+																	@if (!PageModel.Documents[index].HasExpiryDate)
+																	{
+																		<div class="row">
+
+																			<div class="col-xl-6">
+																				<!--begin::Input-->
+																				<div class="form-group">
+																					<label>Issue Date<span class="text-danger">*</span></label>
+
+																					<CustomInputDateNullable class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.Documents[index].IssueDate)" Value="PageModel.Documents[index].IssueDate" ValueChanged="@((DateTime? value) => OnIssueDateValueChanged(value, document.FormId))"></CustomInputDateNullable>
+
+																					<ValidationMessage For="@(() => PageModel.Documents[index].IssueDate)" class="form-text text-danger" />
+																				</div>
+																				<!--end::Input-->
+																			</div>
+																			<div class="col-xl-6">
+																				<!--begin::Input-->
+																				<div class="form-group">
+																					<label class=""></label>
+																					<div class="col-form-label">
+																						<div class="checkbox-inline">
+																							<label class="checkbox">
+																								<InputCheckbox @bind-Value="PageModel.Documents[index].HasExpiryDate"></InputCheckbox>
+																								<span></span>has expiry date
+																							</label>
+																						</div>
+																					</div>
+																				</div>
+																				<!--end::Input-->
+																			</div>
+																		</div>
+																	}
+																	else
+																	{
+																		<div class="row">
+
+
+																			<div class="col-xl-6">
+																				<!--begin::Input-->
+																				<div class="form-group">
+																					<label class=""></label>
+																					<div class="col-form-label">
+																						<div class="checkbox-inline">
+																							<label class="checkbox">
+																								<InputCheckbox @bind-Value="PageModel.Documents[index].HasExpiryDate"></InputCheckbox>
+																								<span></span>has expiry date
+																							</label>
+																						</div>
+																					</div>
+																				</div>
+																				<!--end::Input-->
+																			</div>
+																		</div>
+
+																		<div class="row">
+																			<div class="col-xl-6">
+																				<!--begin::Input-->
+																				<div class="form-group">
+																					<label>Issue Date<span class="text-danger">*</span></label>
+
+																					<CustomInputDateNullable class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.Documents[index].IssueDate)" Value="PageModel.Documents[index].IssueDate" ValueChanged="@((DateTime? value) => OnIssueDateValueChanged(value, document.FormId))"></CustomInputDateNullable>
+
+																					<ValidationMessage For="@(() => PageModel.Documents[index].IssueDate)" class="form-text text-danger" />
+																				</div>
+																				<!--end::Input-->
+																			</div>
+																			<div class="col-xl-6">
+																				<!--begin::Input-->
+																				<div class="form-group">
+																					<label>Expiry Date<span class="text-danger">*</span></label>
+
+																					<CustomInputDateNullable class="form-control form-control-solid form-control-lg" ValueExpression="@(()=> PageModel.Documents[index].ExpiryDate)" Value="PageModel.Documents[index].ExpiryDate" ValueChanged="@((DateTime? value) => OnExpiryDateValueChanged(value, document.FormId))"></CustomInputDateNullable>
+
+																					<ValidationMessage For="@(() => PageModel.Documents[index].ExpiryDate)" class="form-text text-danger" />
+																				</div>
+																				<!--end::Input-->
+																			</div>
+																		</div>
+																	}
+
+																	<!--begin::Input-->
+																	<div class="form-group">
+																		<label>File<span class="text-danger">*</span></label>
+
+																		<InputFile OnChange="@((InputFileChangeEventArgs e) => HandleFileSelection(e, document.FormId))" class="form-control form-control-solid form-control-lg" accept=".png,.jpeg,.jpg,.doc,.docx,.csv,.xlsx,.xls" />
+
+																		@if (!string.IsNullOrEmpty(document.SelectedFileName))
+																		{
+																			<label>Selected file: @document.SelectedFileName </label>
+																		}
+
+																		<ValidationMessage For="@(() => PageModel.Documents[index].FileData)" class="form-text text-muted" />
+
+																	</div>
+																	<!--end::Input-->
+																	@if (!string.IsNullOrEmpty(document.LocationUrl))
+																	{
+																		<!--begin::Input-->
+																		<div class="form-group">
+																			<a href="@document.LocationUrl">Click to view document</a>
+
+																		</div>
+																		<!--end::Input-->
+																	}
+
+																</div>
+															}
+														}
+
+														<!--begin::Form group-->
+														<div class="form-group">
+															<a href="javascript:;" class="btn btn-light-primary" @onclick="AddDocument">
+																<i class="la la-plus"></i>Add
+															</a>
+														</div>
+														<!--end::Form group-->
+
+
+													</div>
+													<div class="tab-pane fade" id="kt_tab_pane_2_4" role="tabpanel" aria-labelledby="kt_tab_pane_2_4">
+														@if (AdditionalInformation != null && AdditionalInformation.Count > 0)
+														{
+															<div class="table-responsive">
+																<table class="table gs-7 gy-7 gx-7">
+																	<thead>
+																		<tr class="fw-bold fs-6 text-gray-800 border-bottom border-gray-200">
+																			<th>Field</th>
+																			<th>Response</th>
+																		</tr>
+																	</thead>
+																	<tbody>
+																		@foreach (var (field, index) in AdditionalInformation.Select((v, i) => (v, i)))
+																		{
+																			<tr>
+																				<td>
+																					<input type="hidden" @bind-value="@field.CustomFieldId" />
+																					@field.CustomField
+																					@if (field.IsCompulsory)
+																					{
+																						<span class="text-danger">*</span>
+																					}
+																				</td>
+																				<td>
+																					<InputText class="form-control form-control-lg form-control-solid" @bind-Value="AdditionalInformation[index].Response"></InputText>
+																					<ValidationMessage For="@(() => AdditionalInformation[index].Response)" class="form-text text-danger" />
+
+																				</td>
+																			</tr>
+																		}
+
+																	</tbody>
+																</table>
+															</div>
+														}
+													</div>
+
+												</div>
+											</div>
+										</div>
+										<!--end::Card-->
+									</div>
+
+								</div>
+
+								</div>
+								<div class="card-footer">
+									<button type="submit" class="btn btn-primary mr-2">Submit</button>
+								<a href="onboarding/dashboard" class="btn btn-secondary">Cancel</a>
+								</div>
+						
+							<!--end::Form-->
+						</div>
+						<!--end::Card-->
+					</div>
+
+				</div>
+
+				
+
+			</EditForm>
+
+		</div>
+		<!--end::Container-->
+	</div>
+	<!--end::Entry-->
+</div>
+<!--end::Content-->

@@ -1,0 +1,40 @@
+﻿@page
+@model LockoutModel
+@{
+    ViewData["Title"] = "Locked out";
+}
+
+<!--begin::Main-->
+<div class="d-flex flex-column flex-root">
+	<!--begin::Login-->
+	<div class="login login-4 login-signin-on d-flex flex-row-fluid" id="kt_login">
+		<div class="d-flex flex-center flex-row-fluid bgi-size-cover bgi-position-top bgi-no-repeat" style="background-image: url('/assets/media/bg/bg-3.jpg');">
+			<div class="login-form text-center p-7 position-relative overflow-hidden">
+				<!--begin::Login Header-->
+				<div class="d-flex flex-center mb-15">
+					<a href="/">
+						<img src="~/assets/media/logos/nibbs_logo.png" class="max-h-75px" alt="" />
+					</a>
+				</div>
+				<!--end::Login Header-->
+				<!--begin::Login Sign in form-->
+				<div class="login-signin">
+					<div class="mb-20">
+						<h3>Locked out</h3>
+						<div class="text-danger font-weight-bold"> This account has been locked out, please try again later.</div>
+					</div>
+
+				</div>
+				<!--end::Login Sign in form-->
+
+			</div>
+		</div>
+	</div>
+	<!--end::Login-->
+</div>
+<!--end::Main-->
+
+@*<header>
+    <h1 class="text-danger">@ViewData["Title"]</h1>
+    <p class="text-danger">This account has been locked out, please try again later.</p>
+</header>*@

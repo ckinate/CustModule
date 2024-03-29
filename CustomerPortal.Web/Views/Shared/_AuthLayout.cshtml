@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>@ViewData["Title"] - CustomerPortal.Web</title>
+
+    <meta charset="utf-8" />
+    <meta name="description" content="NIBSS Customer Portal" />
+    <meta name="keywords" content="NIBSS, Customer, Portal" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:type" content="application" />
+    <meta property="og:title" content="NIBSS Customer Portal" />
+    <meta property="og:url" content="https://fintrak.com" />
+    <meta property="og:site_name" content="Customer | Portal" />
+
+    <link rel="canonical" href="https://fintrak.com" />
+    <link rel="shortcut icon" href="~/assets/media/logos/favicon.ico" />
+
+    <!--begin::Fonts-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" />
+    <!--end::Fonts-->
+
+    <!--begin::Global Stylesheets Bundle(used by all pages)-->
+    <link href="~/assets/plugins/global/plugins.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="~/assets/css/style.bundle.css" rel="stylesheet" type="text/css" />
+    <!--end::Global Stylesheets Bundle-->
+
+</head>
+<!--begin::Body-->
+<body id="kt_body" class="bg-body">
+
+	<!--begin::Main-->
+	<!--begin::Root-->
+	<div class="d-flex flex-column flex-root">
+		<!--begin::Authentication - Sign-in -->
+		<div class="d-flex flex-column flex-column-fluid bgi-position-y-bottom position-x-center bgi-no-repeat bgi-size-contain bgi-attachment-fixed" style="background-image: url(assets/media/illustrations/sketchy-1/14.png">
+			<!--begin::Content-->
+			<div class="d-flex flex-center flex-column flex-column-fluid p-10 pb-lg-20">
+				<!--begin::Logo-->
+				<a asp-action="Index" asp-controller="Home" class="mb-12">
+					<img alt="Logo" src="~/assets/media/logos/logo-1.svg" class="h-40px" />
+				</a>
+				<!--end::Logo-->
+				@RenderBody()
+			</div>
+			<!--end::Content-->
+			<!--begin::Footer-->
+			<div class="d-flex flex-center flex-column-auto p-10">
+				<!--begin::Links-->
+				<div class="d-flex align-items-center fw-bold fs-6">
+					<a href="#" class="text-muted text-hover-primary px-2">About</a>
+					<a href="mailto:support@gmail.com" class="text-muted text-hover-primary px-2">Contact</a>
+					<a href="#" class="text-muted text-hover-primary px-2">Contact Us</a>
+				</div>
+				<!--end::Links-->
+			</div>
+			<!--end::Footer-->
+		</div>
+		<!--end::Authentication - Sign-in-->
+	</div>
+	<!--end::Root-->
+	<!--end::Main-->
+
+
+    <!--begin::Javascript-->
+    <script>var hostUrl = "assets/";</script>
+
+    <!--begin::Global Javascript Bundle(used by all pages)-->
+    <script src="~/assets/plugins/global/plugins.bundle.js"></script>
+    <script src="~/assets/js/scripts.bundle.js"></script>
+    <!--end::Global Javascript Bundle-->
+
+    <!--begin::Page Custom Javascript(used by this page)-->
+    <script src="~/assets/js/custom/authentication/sign-in/general.js"></script>
+    <!--end::Page Custom Javascript-->
+
+    @await RenderSectionAsync("Scripts", required: false)
+    <!--end::Javascript-->
+</body>
+<!--end::Body-->
